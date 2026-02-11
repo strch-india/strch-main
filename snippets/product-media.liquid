@@ -1,0 +1,109 @@
+{% comment %}
+  Renders product media
+
+  Accepts:
+  - media: {Object} Product Media object
+  - loop: {Boolean} Enable video looping (optional)
+  - variant_image: {Boolean} Whether or not media is associated with a variant
+  - section_id: {String} Section ID for data-media-id attribute
+
+  Usage:
+  {% render 'product-media',
+    media: media,
+    loop: section.settings.enable_video_looping,
+    variant_image: true,
+    section_id: section.id
+  %}
+{% endcomment %}
+
+{%- if media.media_type == 'image' -%}
+  <div class="product-media-modal__item" data-media-id="{{ section_id }}-{{ media.id }}" data-original-width="{{ media.width }}" data-original-height="{{ media.height }}">
+    <img
+      class="product-media-modal__image global-media-settings global-media-settings--no-shadow{% if variant_image %} product__media-item--variant{% endif %}"
+      src="{{ media | image_url }}"
+      srcset="{{ media | image_url }} {{ media.width }}w"
+      sizes="100vw"
+      alt="{{ media.alt | escape }}"
+      loading="lazy"
+      width="{{ media.width }}"
+      height="{{ media.height }}"
+      data-zoomable="true"
+    >
+  </div>
+{%- else -%}
+  {%- if media.media_type == 'model' -%}
+    <div class="product-media-modal__item product-media-modal__model" data-media-id="{{ section_id }}-{{ media.id }}">
+      <product-model
+        class="deferred-media media media--transparent global-media-settings global-media-settings--no-shadow"
+        style="padding-top: min(calc(100vh - 12rem), 100%)"
+      >
+  {%- else -%}
+    <div class="product-media-modal__item" data-media-id="{{ section_id }}-{{ media.id }}">
+      <deferred-media
+        class="deferred-media media global-media-settings global-media-settings--no-shadow"
+        style="padding-top: min(calc(100vh - 12rem), {{ 1 | divided_by: media.aspect_ratio | times: 100 }}%)"
+      >
+  {%- endif -%}
+
+  <button id="Deferred-Poster-Modal-{{ media.id }}" class="deferred-media__poster" type="button">
+    <span class="deferred-media__poster-button motion-reduce">
+      {%- if media.media_type == 'model' -%}
+        <span class="svg-wrapper">{{ 'icon-3d-model' | inline_asset_content }}</span>
+      {%- else -%}
+        <span class="svg-wrapper">{{ 'icon-play.svg' | inline_asset_content }}</span>
+      {%- endif -%}
+    </span>
+    <img
+      src="{{ media.preview_image | image_url }}"
+      srcset="{{ media.preview_image | image_url }} {{ media.preview_image.width }}w"
+      sizes="100vw"
+      loading="lazy"
+      width="{{ media.preview_image.width }}"
+      height="{{ media.preview_image.height }}"
+      alt="{{ media.preview_image.alt | escape }}"
+    >
+  </button>
+  <template>
+    {%- case media.media_type -%}
+      {%- when 'external_video' -%}
+        {%- assign video_class = 'js-' | append: media.host -%}
+        {%- if media.host == 'youtube' -%}
+          {{
+            media
+            | external_video_url: autoplay: true, loop: loop, playlist: media.external_id
+            | external_video_tag: class: video_class, loading: 'lazy'
+          }}
+        {%- else -%}
+          {{
+            media
+            | external_video_url: autoplay: true, loop: loop
+            | external_video_tag: class: video_class, loading: 'lazy'
+          }}
+        {%- endif -%}
+      {%- when 'video' -%}
+        {{ media | media_tag: image_size: '2048x', autoplay: true, loop: loop, controls: true, preload: 'none' }}
+      {%- when 'model' -%}
+        {{ media | media_tag: image_size: '2048x', toggleable: true }}
+    {%- endcase -%}
+  </template>
+
+  {%- if media.media_type == 'model' -%}
+    </product-model>
+    <button
+      class="button button--full-width product__xr-button"
+      type="button"
+      aria-label="{{ 'products.product.xr_button_label' | t }}"
+      data-shopify-xr
+      data-shopify-model3d-id="{{ media.id }}"
+      data-shopify-title="title"
+      data-shopify-xr-hidden
+    >
+      <span class="svg-wrapper">{{ 'icon-3d-model' | inline_asset_content }}</span>
+      {{ 'products.product.xr_button' | t }}
+    </button>
+    </div>
+  {%- else -%}
+    </deferred-media>
+    </div>
+  {%- endif -%}
+{%- endif -%}

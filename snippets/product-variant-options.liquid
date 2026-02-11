@@ -1,0 +1,169 @@
+{% comment %}
+  Renders product variant options
+
+  Accepts:
+  - product: {Object} product object.
+  - option: {Object} current product_option object.
+  - block: {Object} block object.
+  - picker_type: {String} type of picker to dispay
+
+
+  Usage:
+  {% render 'product-variant-options',
+    product: product,
+    option: option,
+    block: block
+    picker_type: picker_type
+  %}
+{% endcomment %}
+{%- liquid
+  assign section_id = section_id | default: section.id
+  assign product_form_id = 'product-form-' | append: section_id
+-%}
+
+<div class="variant-picker-container">
+{%- for value in option.values -%}
+  {%- liquid
+  assign swatch_image_url = null
+
+  # detect if this option is Color
+  assign is_color_option = option.name | downcase
+  assign color_flag = false
+  if is_color_option contains 'color'
+    assign color_flag = true
+  endif
+
+  if color_flag
+    assign option_index = option.position | minus: 1
+
+    # find matched variant
+    assign matched_variant = null
+    for v in product.variants
+      if v.options[option_index] == value
+        assign matched_variant = v
+        break
+      endif
+    endfor
+
+    # variant image thumbnail
+    if matched_variant and matched_variant.featured_media
+      assign swatch_image_url = matched_variant.featured_media | image_url: width: 80
+
+    # manual swatch image fallback
+    elsif value.swatch.image
+      assign swatch_image_url = value.swatch.image | image_url: width: 50
+    endif
+  endif
+
+  # availability check
+  assign option_disabled = true
+  if value.available
+    assign option_disabled = false
+  endif
+-%}
+
+  {%- capture input_id -%}
+    {{product.id}}--{{ section_id }}-{{ option.position }}-{{ forloop.index0 -}}
+  {%- endcapture -%}
+
+  {%- capture input_name -%}
+    {{ option.name }}-{{ option.position }}
+  {%- endcapture -%}
+
+  {%- capture input_dataset -%}
+    data-product-url="{{ value.product_url }}"
+    data-option-value-id="{{ value.id }}"
+  {%- endcapture -%}
+
+  {%- capture label_unavailable -%}
+    <span class="visually-hidden label-unavailable">
+      {{- 'products.product.variant_sold_out_or_unavailable' | t -}}
+    </span>
+  {%- endcapture -%}
+  {%- if picker_type == 'swatch' -%}
+    {%- capture help_text -%}
+      <span class="visually-hidden">{{ value | escape }}</span>
+      {{ label_unavailable }}
+    {%- endcapture -%}
+    {% capture extra_props %}
+      {% if swatch_value %}
+        data-swatch-value="{{ swatch_value }}"
+      {% endif %}
+      {% if swatch_focal_point %}
+        data-swatch-focal-point="{{ swatch_focal_point }}"
+      {% endif %}
+      {% if swatch_value %}
+        class="has-swatch"
+      {% endif %}
+    {% endcapture %}
+    {%
+      render 'swatch-input',
+      id: input_id,
+      name: input_name,
+      value: value | escape,
+      swatch: value.swatch,
+      product_form_id: product_form_id,
+      checked: value.selected,
+      visually_disabled: option_disabled,
+      shape: block.settings.swatch_shape,
+      help_text: help_text,
+      additional_props: input_dataset | append: extra_props
+    %}
+  {%- elsif picker_type == 'button' -%}
+    <div class="vairant-swatch">
+      <input
+        type="radio"
+        id="{{ input_id }}"
+        name="{{ input_name | escape }}"
+        value="{{ value | escape }}"
+        form="{{ product_form_id }}"
+        {% if value.selected %}
+          checked
+        {% endif %}
+        {% if option_disabled %}
+          class="disabled"
+        {% endif %}
+        {{ input_dataset }}
+        {% if swatch_value %}data-swatch-value="{{ swatch_value }}"{% endif %}
+      >
+      {% comment %} <label for="{{ input_id }}" data-swatch-value="{{ value }}" class="{% if option_disabled %}disabled{% endif %} {% if swatch_value %}has-swatch{% endif %}">
+        {{ value -}}
+        {{ label_unavailable }}
+      </label> {% endcomment %}
+      <label
+        for="{{ input_id }}"
+        class="{% if option_disabled %}disabled {% endif %}{% if swatch_image_url and color_flag %}color-swatch{% else %}variant-options{% endif %}"
+        {% if swatch_value and color_flag %}style="background-image: {{ swatch_value }}; background-size: cover; background-position: center;"{% endif %}
+      >
+        {% if color_flag and swatch_image_url %}
+          <img  src="{{ swatch_image_url }}" alt="{{ value | escape }}" class="variant-thumbnail" width="auto" height="auto">
+        {% else %}
+          {{ value -}}
+          {{ label_unavailable }}
+        {% endif %}
+      </label>
+    </div>
+  {%- elsif picker_type == 'dropdown' or picker_type == 'swatch_dropdown' -%}
+    <option
+      id="{{ input_id }}"
+      value="{{ value | escape }}"
+      {% if value.selected %}
+        selected="selected"
+      {% endif %}
+      {% if swatch_value and picker_type == 'swatch_dropdown' %}
+        data-option-swatch-value="{{ swatch_value }}"
+        {% if swatch_focal_point %}
+          data-option-swatch-focal-point="{{ swatch_focal_point }}"
+        {% endif %}
+      {% endif %}
+      {{ input_dataset }}
+    >
+      {% if option_disabled -%}
+        {{- 'products.product.value_unavailable' | t: option_value: value -}}
+      {%- else -%}
+        {{- value -}}
+      {%- endif %}
+    </option>
+  {%- endif -%}
+{%- endfor -%}
+</div>

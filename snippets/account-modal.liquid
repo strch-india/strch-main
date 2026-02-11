@@ -1,0 +1,363 @@
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+
+<div
+  id="AccountModal"
+  class="account-modal"
+  aria-hidden="true"
+  role="dialog"
+  aria-modal="true"
+>
+  <div class="account-modal__overlay" data-account-modal-close></div>
+
+  <div class="account-modal__dialog">
+    <button
+      type="button"
+      class="account-modal__close"
+      data-account-modal-close
+      aria-label="{{ 'accessibility.close' | t }}"
+    >
+      {{ 'icon-close.svg' | inline_asset_content }}
+    </button>
+
+    {% comment %} <div class="account-modal__tabs">
+      <button
+        type="button"
+        class="account-modal__tab account-modal__tab--active"
+        data-account-tab="login"
+      >
+        {{ 'customer.login_page.title' | t }}
+      </button>
+      <button
+        type="button"
+        class="account-modal__tab"
+        data-account-tab="register"
+      >
+        {{ 'customer.register.title' | t }}
+      </button>
+    </div> {% endcomment %}
+
+    <div class="account-modal__body">
+      {%- form 'recover_customer_password', id: 'RecoverPasswordForm' -%}
+        {% assign recover_success = form.posted_successfully? %}
+      {%- endform -%}
+
+      <div
+        class="account-modal__panel account-modal__panel--login account-modal__panel--active"
+        data-account-panel="login"
+      >
+        <h2>Login</h2>
+        {%- form 'customer_login', id: 'AccountModalLoginForm', novalidate: 'novalidate' -%}
+          {%- if form.errors -%}
+            <div class="form__message" tabindex="-1" autofocus>
+              <span class="svg-wrapper">
+                {{- 'icon-error.svg' | inline_asset_content -}}
+              </span>
+              {{ 'templates.contact.form.error_heading' | t }}
+            </div>
+            {{ form.errors | default_errors }}
+          {%- endif -%}
+
+          <div class="field">
+            <input
+              type="email"
+              name="customer[email]"
+              id="AccountModal-CustomerEmail"
+              autocomplete="email"
+              autocorrect="off"
+              autocapitalize="off"
+              {% if form.errors contains 'form' %}
+                aria-invalid="true"
+              {% endif %}
+              placeholder="{{ 'customer.login_page.email' | t }}"
+            >
+            <label for="AccountModal-CustomerEmail">
+              {{ 'customer.login_page.email' | t }}
+            </label>
+          </div>
+
+          <div class="field">
+            <input
+              type="password"
+              name="customer[password]"
+              id="AccountModal-CustomerPassword"
+              autocomplete="current-password"
+              {% if form.errors contains 'form' %}
+                aria-invalid="true"
+              {% endif %}
+              placeholder="{{ 'customer.login_page.password' | t }}"
+            >
+            <label for="AccountModal-CustomerPassword">
+              {{ 'customer.login_page.password' | t }}
+            </label>
+          </div>
+
+          <button
+            type="button"
+            class="account-modal__link account-modal__link--secondary"
+            data-account-show-recover
+          >
+            {{ 'customer.login_page.forgot_password' | t }}
+          </button>
+
+          <div class="account-modal__actions">
+            <button class="button button--primary" type="submit">
+              {{ 'customer.login_page.sign_in' | t }}
+            </button>
+
+            <button
+              type="button"
+              class="account-modal__link"
+              data-account-tab-switch="register"
+            >
+              {{ 'customer.login_page.create_account' | t }}
+            </button>
+          </div>
+        {%- endform -%}
+      </div>
+
+      <div
+        class="account-modal__panel account-modal__panel--register"
+        data-account-panel="register"
+      >
+        <h2>Create Account</h2>
+        {%- form 'create_customer', id: 'AccountModalRegisterForm', novalidate: 'novalidate' -%}
+          {%- if form.errors -%}
+            <div class="form__message" tabindex="-1" autofocus>
+              <span class="svg-wrapper">
+                {{- 'icon-error.svg' | inline_asset_content -}}
+              </span>
+              {{ 'templates.contact.form.error_heading' | t }}
+            </div>
+          {%- endif -%}
+
+          <div class="field">
+            <input
+              type="text"
+              name="customer[first_name]"
+              id="AccountModal-FirstName"
+              {% if form.first_name %}
+                value="{{ form.first_name }}"
+              {% endif %}
+              autocomplete="given-name"
+              placeholder="{{ 'customer.register.first_name' | t }}"
+            >
+            <label for="AccountModal-FirstName">
+              {{ 'customer.register.first_name' | t }}
+            </label>
+          </div>
+
+          <div class="field">
+            <input
+              type="text"
+              name="customer[last_name]"
+              id="AccountModal-LastName"
+              {% if form.last_name %}
+                value="{{ form.last_name }}"
+              {% endif %}
+              autocomplete="family-name"
+              placeholder="{{ 'customer.register.last_name' | t }}"
+            >
+            <label for="AccountModal-LastName">
+              {{ 'customer.register.last_name' | t }}
+            </label>
+          </div>
+
+          <div class="field">
+            <input
+              type="email"
+              name="customer[email]"
+              id="AccountModal-Email"
+              {% if form.email %}
+                value="{{ form.email }}"
+              {% endif %}
+              spellcheck="false"
+              autocapitalize="off"
+              autocomplete="email"
+              aria-required="true"
+              {% if form.errors contains 'email' %}
+                aria-invalid="true"
+                aria-describedby="AccountModal-Email-error"
+              {% endif %}
+              placeholder="{{ 'customer.register.email' | t }}"
+            >
+            <label for="AccountModal-Email">
+              {{ 'customer.register.email' | t }}
+            </label>
+          </div>
+          {%- if form.errors contains 'email' -%}
+            <span id="AccountModal-Email-error" class="form__message">
+              <span class="svg-wrapper">
+                {{- 'icon-error.svg' | inline_asset_content -}}
+              </span>
+              {{ form.errors.translated_fields.email | capitalize }}
+              {{ form.errors.messages.email }}.
+            </span>
+          {%- endif -%}
+
+          <div class="field">
+            <input
+              type="password"
+              name="customer[password]"
+              id="AccountModal-Password"
+              aria-required="true"
+              {% if form.errors contains 'password' %}
+                aria-invalid="true"
+                aria-describedby="AccountModal-Password-error"
+              {% endif %}
+              placeholder="{{ 'customer.register.password' | t }}"
+            >
+            <label for="AccountModal-Password">
+              {{ 'customer.register.password' | t }}
+            </label>
+          </div>
+          {%- if form.errors contains 'password' -%}
+            <span id="AccountModal-Password-error" class="form__message">
+              <span class="svg-wrapper">
+                {{- 'icon-error.svg' | inline_asset_content -}}
+              </span>
+              {{ form.errors.translated_fields.password | capitalize }}
+              {{ form.errors.messages.password }}.
+            </span>
+          {%- endif -%}
+
+          <div class="account-modal__actions">
+            <button class="button button--primary" type="submit">
+              {{ 'customer.register.submit' | t }}
+            </button>
+
+            <button
+              type="button"
+              class="account-modal__link"
+              data-account-tab-switch="login"
+            >
+              {{ 'customer.login_page.title' | t }}
+            </button>
+          </div>
+        {%- endform -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const modal = document.getElementById('AccountModal');
+    if (!modal) return;
+
+    const openTriggers = document.querySelectorAll('[data-account-modal-open]');
+    const closeTriggers = modal.querySelectorAll('[data-account-modal-close]');
+    const tabs = modal.querySelectorAll('[data-account-tab]');
+    const panels = modal.querySelectorAll('[data-account-panel]');
+    const switches = modal.querySelectorAll('[data-account-tab-switch]');
+    const recoverTrigger = modal.querySelector('[data-account-show-recover]');
+
+    // Helper function to check if user is logged in and on account page
+    function shouldPreventModal() {
+      {% if customer %}
+        const currentPath = window.location.pathname;
+        const accountPath = '{{ routes.account_url }}';
+        const isAccountPage = currentPath.includes('/account') || 
+                             currentPath === accountPath ||
+                             currentPath.startsWith(accountPath + '/');
+        return isAccountPage;
+      {% endif %}
+      return false;
+    }
+
+    function setTab(target) {
+      tabs.forEach((btn) => {
+        btn.classList.toggle('account-modal__tab--active', btn.dataset.accountTab === target);
+      });
+      panels.forEach((panel) => {
+        panel.classList.toggle('account-modal__panel--active', panel.dataset.accountPanel === target);
+      });
+    }
+
+    function openModal(initialTab) {
+      // Prevent opening if user is logged in and on account page
+      if (shouldPreventModal()) {
+        return;
+      }
+      
+      modal.classList.add('is-active');
+      document.documentElement.classList.add('no-scroll');
+      modal.setAttribute('aria-hidden', 'false');
+      setTab(initialTab || 'login');
+    }
+
+    function closeModal() {
+      modal.classList.remove('is-active');
+      document.documentElement.classList.remove('no-scroll');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+
+    // Close modal immediately if user is logged in and on account page
+    if (shouldPreventModal()) {
+      closeModal();
+    }
+
+    openTriggers.forEach((trigger) => {
+      trigger.addEventListener('click', (event) => {
+        event.preventDefault();
+        const tab = trigger.dataset.accountModalOpen || 'login';
+        openModal(tab);
+      });
+    });
+
+    closeTriggers.forEach((trigger) => {
+      trigger.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        closeModal();
+      });
+    });
+
+    // Close modal when clicking outside (on overlay)
+    const overlay = modal.querySelector('.account-modal__overlay');
+    if (overlay) {
+      overlay.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        closeModal();
+      });
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        setTab(tab.dataset.accountTab);
+      });
+    });
+
+    switches.forEach((sw) => {
+      sw.addEventListener('click', () => {
+        const target = sw.dataset.accountTabSwitch;
+        setTab(target);
+      });
+    });
+
+    if (recoverTrigger) {
+      recoverTrigger.addEventListener('click', () => {
+        window.location.href = '{{ routes.account_login_url }}#recover';
+      });
+    }
+
+    document.addEventListener('keyup', (event) => {
+      if (event.key === 'Escape' && modal.classList.contains('is-active')) {
+        closeModal();
+      }
+    });
+
+    // Check for URL parameters that might trigger modal opening
+    const urlParams = new URLSearchParams(window.location.search);
+    const shouldOpenModal = urlParams.get('login') || urlParams.get('register') || urlParams.get('account_modal');
+    
+    if (shouldOpenModal && !shouldPreventModal()) {
+      openModal(shouldOpenModal === 'register' ? 'register' : 'login');
+    }
+
+    // Prevent modal from opening if user is logged in and on account page (even after successful login/register)
+    if (shouldPreventModal() && modal.classList.contains('is-active')) {
+      closeModal();
+    }
+  });
+</script>

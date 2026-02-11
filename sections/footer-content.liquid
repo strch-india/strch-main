@@ -1,0 +1,70 @@
+{%- if template contains 'index' and section.settings.footer_content != blank -%}
+  <link href="{{ 'footer_content.min.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
+  <div id="footer_content--section" class="footer_content-section index-rte" data-section-type="rich-text">
+    <div class="collapsableParent">
+      <header class="collapse_head ">
+        <p class="footer-content-title">Know more about {{ shop.name }}</p>
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0.5" y="0.5" width="31" height="31" transform="matrix(4.37114e-08 1 1 -4.37114e-08 2.18557e-08 -2.18557e-08)" fill="#FDFDFD"/>
+          <rect x="0.5" y="0.5" width="31" height="31" transform="matrix(4.37114e-08 1 1 -4.37114e-08 2.18557e-08 -2.18557e-08)" stroke="#FDFDFD"/>
+          <path d="M12 14L16 18.6667L20 14" stroke="#333333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </header>
+      <div class="standard__rte collapableTab wrapper--full" data-aos="hero" data-aos-order="2">
+        {{ section.settings.footer_content }}
+      </div>
+    </div>
+  </div>
+{%- elsif template contains 'collection' and collection.metafields.custom.footer_content != null -%}
+  <link href="{{ 'footer_content.min.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
+  <div id="footer_content--section" class="footer_content-section index-rte" data-section-type="rich-text">
+    <div class="collapsableParent">
+      <header class="collapse_head ">
+        <p class="footer-content-title">Know more about {{ collection.title }}</p>
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0.5" y="0.5" width="31" height="31" transform="matrix(4.37114e-08 1 1 -4.37114e-08 2.18557e-08 -2.18557e-08)" fill="#FDFDFD"/>
+          <rect x="0.5" y="0.5" width="31" height="31" transform="matrix(4.37114e-08 1 1 -4.37114e-08 2.18557e-08 -2.18557e-08)" stroke="#FDFDFD"/>
+          <path d="M12 14L16 18.6667L20 14" stroke="#333333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </header>
+      <div class="standard__rte collapableTab wrapper--full" data-aos="hero" data-aos-order="2">
+        {{ collection.metafields.custom.footer_content | metafield_tag }}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const heads = document.querySelectorAll('.collapse_head');
+
+    heads.forEach((head) => {
+      head.addEventListener('click', () => {
+        head.classList.toggle('is-open');
+        head.nextElementSibling.classList.toggle('is-open');
+      });
+    });
+  });
+</script>
+
+{%- schema -%}
+{
+  "name": "Footer Content",
+  "enabled_on": {
+    "templates": ["*"],
+    "groups": ["footer"]
+  },
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "footer_content",
+      "label": "Homepage Footer Content"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer Content"
+    }
+  ]
+}
+{%- endschema -%}

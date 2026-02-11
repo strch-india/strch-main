@@ -1,0 +1,50 @@
+.recently-viewed-products {
+  display: block;
+}
+
+.recently-viewed-products__heading {
+  margin: 0 0 1rem;
+  text-align: center;
+}
+
+.recently-viewed-products__subtitle {
+  margin: 0 0 2rem;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  color: rgba(var(--color-foreground), 0.75);
+  text-align: center;
+}
+
+@media screen and (min-width: 750px) {
+  .recently-viewed-products__subtitle {
+    font-size: 1.6rem;
+  }
+}
+@media screen and (max-width: 768px){
+  .recently-viewed-products__subtitle{
+    font-size: 1.4rem;
+  }
+  .recently-viewed-products .slider-buttons button{
+    width: 30px;
+    height: 30px;
+    left: 20px;
+  }
+  .recently-viewed-products .slider-button .icon{
+    height: .6rem;
+  }
+}
+
+.recently-viewed-products__empty {
+  text-align: center;
+  padding: 2rem 0;
+  color: rgba(var(--color-foreground), 0.6);
+}
+
+.recently-viewed-products slider-component {
+  position: relative;
+}
+
+.recently-viewed-products .slider-buttons {
+  margin-top: 0rem;
+  padding: 0px;
+}

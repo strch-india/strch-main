@@ -1,0 +1,247 @@
+{%- comment -%}
+  Product information accordion for description and extra info.
+
+  Sections shown:
+  - Description ({{ product.description }})
+  - Fit (metafield: product.metafields.custom.fit)
+  - Features (metafield: product.metafields.custom.features)
+  - Material composition (metafield: product.metafields.custom.material_composition)
+  - Wash care (metafield: product.metafields.custom.wash_care)
+  - Shipping & exchanges / returns (section.settings.shipping_tabs_content)
+{%- endcomment -%}
+
+{%- liquid
+  assign description_content = product.description
+  assign fit_content = product.metafields.custom.fit
+  assign features_content = product.metafields.custom.features
+  assign material_content = product.metafields.custom.material_composition
+  assign style_code = product.metafields.custom.style_code
+  assign wash_care_content = product.metafields.custom.wash_care
+  assign shipping_content = section.settings.shipping_tabs_content
+
+  assign has_any_tab = false
+  if description_content != blank
+    assign has_any_tab = true
+  elsif fit_content != blank
+    assign has_any_tab = true
+  elsif features_content != blank
+    assign has_any_tab = true
+  elsif material_content != blank
+    assign has_any_tab = true
+  elsif wash_care_content != blank
+    assign has_any_tab = true
+  elsif shipping_content != blank
+    assign has_any_tab = true
+  endif
+-%}
+
+{%- if has_any_tab -%}
+  <div class="product-tabs quick-add-hidden" {{ block.shopify_attributes }}>
+    {%- if description_content != blank -%}
+      <div class="product__accordion accordion">
+        <details
+          id="Details-product-tabs-description-{{ section.id }}"
+        >
+          <summary>
+            <div class="summary__title">
+              <h2 class="h5 accordion__title">
+                {{ 'products.product.description' | t | default: 'Description' }}
+              </h2>
+            </div>
+            {{- 'icon-caret.svg' | inline_asset_content -}}
+          </summary>
+          <div
+            class="accordion__content rte"
+            id="ProductTabs-description-{{ section.id }}"
+          >
+            {{ description_content }}
+          </div>
+        </details>
+      </div>
+    {%- endif -%}
+
+    {%- if fit_content != blank -%}
+      <div class="product__accordion accordion">
+        <details
+          id="Details-product-tabs-fit-{{ section.id }}"
+        >
+          <summary>
+            <div class="summary__title">
+              <h2 class="h5 accordion__title">
+                Fit
+              </h2>
+            </div>
+            {{- 'icon-caret.svg' | inline_asset_content -}}
+          </summary>
+          <div
+            class="accordion__content rte"
+            id="ProductTabs-fit-{{ section.id }}"
+          >
+            {{ fit_content | metafield_tag }}
+          </div>
+        </details>
+      </div>
+    {%- endif -%}
+
+    {%- if features_content != blank -%}
+      <div class="product__accordion accordion">
+        <details
+          id="Details-product-tabs-features-{{ section.id }}"
+        >
+          <summary>
+            <div class="summary__title">
+              <h2 class="h5 accordion__title">
+                Features
+              </h2>
+            </div>
+            {{- 'icon-caret.svg' | inline_asset_content -}}
+          </summary>
+          <div
+            class="accordion__content rte"
+            id="ProductTabs-features-{{ section.id }}"
+          >
+            {{ features_content | metafield_tag }}
+          </div>
+        </details>
+      </div>
+    {%- endif -%}
+
+    {%- if material_content != blank -%}
+      <div class="product__accordion accordion">
+        <details
+          id="Details-product-tabs-material-{{ section.id }}"
+        >
+          <summary>
+            <div class="summary__title">
+              <h2 class="h5 accordion__title">
+                Material composition
+              </h2>
+            </div>
+            {{- 'icon-caret.svg' | inline_asset_content -}}
+          </summary>
+          <div
+            class="accordion__content rte"
+            id="ProductTabs-material-{{ section.id }}"
+          >
+            {{ material_content | metafield_tag }}
+          </div>
+        </details>
+      </div>
+    {%- endif -%}
+
+    {%- if wash_care_content != blank -%}
+      <div class="product__accordion accordion">
+        <details
+          id="Details-product-tabs-wash-{{ section.id }}"
+        >
+          <summary>
+            <div class="summary__title">
+              <h2 class="h5 accordion__title">
+                Wash care
+              </h2>
+            </div>
+            {{- 'icon-caret.svg' | inline_asset_content -}}
+          </summary>
+          <div
+            class="accordion__content rte"
+            id="ProductTabs-wash-{{ section.id }}"
+          >
+            {{ wash_care_content | metafield_tag }}
+          </div>
+        </details>
+      </div>
+    {%- endif -%}
+
+    {%- if style_code != blank -%}
+      <div class="product__accordion accordion">
+        <details
+          id="Details-product-tabs-wash-{{ section.id }}"
+        >
+          <summary>
+            <div class="summary__title">
+              <h2 class="h5 accordion__title">
+                Style Code
+              </h2>
+            </div>
+            {{- 'icon-caret.svg' | inline_asset_content -}}
+          </summary>
+          <div
+            class="accordion__content rte"
+            id="ProductTabs-wash-{{ section.id }}"
+          >
+            {{ style_code | metafield_tag }}
+          </div>
+        </details>
+      </div>
+    {%- endif -%}
+
+    {%- if shipping_content != blank -%}
+      <div class="product__accordion accordion">
+        <details
+          id="Details-product-tabs-shipping-{{ section.id }}"
+        >
+          <summary>
+            <div class="summary__title">
+              <h2 class="h5 accordion__title">
+                Shipping &amp; exchanges / returns
+              </h2>
+            </div>
+            {{- 'icon-caret.svg' | inline_asset_content -}}
+          </summary>
+          <div
+            class="accordion__content rte"
+            id="ProductTabs-shipping-{{ section.id }}"
+          >
+            {{ shipping_content }}
+          </div>
+        </details>
+      </div>
+    {%- endif -%}
+  </div>
+
+  <script>
+    (function() {
+      if (window.__productTabsAccordionInitialized) return;
+      window.__productTabsAccordionInitialized = true;
+
+      document.addEventListener('toggle', function(event) {
+        var details = event.target;
+        var container = details.closest('.product-tabs');
+        if (!container) return;
+
+        // Animate open / close for the toggled accordion
+        var content = details.querySelector('.accordion__content');
+        if (content) {
+          content.style.overflow = 'hidden';
+          var startHeight = content.offsetHeight;
+          var endHeight = details.open ? content.scrollHeight : 0;
+
+          content.style.height = startHeight + 'px';
+          requestAnimationFrame(function() {
+            content.style.transition = 'height 220ms ease';
+            content.style.height = endHeight + 'px';
+          });
+
+          content.addEventListener('transitionend', function handler() {
+            content.style.transition = '';
+            if (!details.open) {
+              content.style.height = '';
+            } else {
+              content.style.height = 'auto';
+            }
+            content.removeEventListener('transitionend', handler);
+          });
+        }
+
+        // Close other accordions in the same group
+        if (!details.open) return;
+        var allDetails = container.querySelectorAll('details');
+        allDetails.forEach(function(el) {
+          if (el !== details) {
+            el.open = false;
+          }
+        });
+      }, true);
+    })();
+  </script>
+{%- endif -%}

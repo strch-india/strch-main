@@ -1,0 +1,215 @@
+{% comment %}
+MEN COLLECTION TEMPLATE
+{% endcomment %}
+
+<section class="custom-collection-wrap">
+  <div class="collection-banner">
+    {% if section.settings.banner_image %}
+      <img src="{{ section.settings.banner_image | img_url: '2000x' }}"  class="banner-img" alt="Men Banner" width="auto" height="auto">
+    {% endif %}
+  </div>
+
+  <div class="collection-image-blocks swiper">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        <div class="image-item swiper-slide" data-header-setting="{{ block.settings.header_style | default: 'light' }}">
+          {% if block.settings.block_link %}
+            <a href="{{ block.settings.block_link }}">
+          {% endif %}
+
+          {% if block.settings.block_image %}
+          <div class="show-desktop">
+            <img src="{{ block.settings.block_image | img_url: '2000x' }}" alt="Image Block" width="auto" height="auto">
+          </div>
+          {% endif %}
+          {% if block.settings.mobile_block_image != blank %}
+            <div class="show-mobile">
+              <img src="{{ block.settings.mobile_block_image | img_url: '800x' }}" alt="Image Block" width="auto" height="auto">
+            </div>
+          {% else %}
+            <div class="show-mobile">
+              <img src="{{ block.settings.block_image | img_url: '800x' }}" alt="Image Block" width="auto" height="auto">
+            </div>
+          {% endif %}
+
+          {% if block.settings.block_title %}
+            <p class="img-title">{{ block.settings.block_title }}</p>
+          {% endif %}
+
+          {% if block.settings.block_link %}
+            </a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="collection-slider-nav">
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
+</section>
+
+{% javascript %}
+  (function() {
+    function initMenCollectionSlider(root) {
+      if (typeof Swiper === 'undefined') return;
+
+      var context = root || document;
+      var collectionWrap = context.querySelector('.custom-collection-wrap');
+      if (!collectionWrap) return;
+
+      var sliderEl = collectionWrap.querySelector('.collection-image-blocks.swiper');
+      if (!sliderEl) return;
+
+      // Clean up any existing instance to prevent double init
+      if (sliderEl._swiperInstance) {
+        sliderEl._swiperInstance.destroy(true, true);
+        sliderEl._swiperInstance = null;
+      }
+
+      var paginationEl = sliderEl.querySelector('.swiper-pagination');
+      var nextEl = sliderEl.querySelector('.swiper-button-next');
+      var prevEl = sliderEl.querySelector('.swiper-button-prev');
+
+      var swiper = new Swiper(sliderEl, {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        loop: false,
+        watchOverflow: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false
+        },
+        pagination: paginationEl ? {
+          el: paginationEl,
+          clickable: true
+        } : false,
+        navigation: (nextEl && prevEl) ? {
+          nextEl: nextEl,
+          prevEl: prevEl
+        } : {},
+        breakpoints: {
+          750: {
+            slidesPerView: 1
+          }
+        }
+      });
+
+      function updateHeaderFromActiveSlide(swiperInstance) {
+        if (!swiperInstance || !swiperInstance.slides || swiperInstance.slides.length === 0) {
+          document.body.removeAttribute('data-header');
+          return;
+        }
+
+        var activeIndex = swiperInstance.activeIndex != null ? swiperInstance.activeIndex : 0;
+        var activeSlide = swiperInstance.slides[activeIndex];
+        if (!activeSlide) {
+          document.body.removeAttribute('data-header');
+          return;
+        }
+
+        var headerStyle = activeSlide.getAttribute('data-header-setting') || 'light';
+        if (headerStyle) {
+          document.body.setAttribute('data-header', headerStyle);
+        } else {
+          document.body.removeAttribute('data-header');
+        }
+      }
+
+      swiper.on('init', function(swiperInstance) {
+        updateHeaderFromActiveSlide(swiperInstance);
+      });
+
+      swiper.on('slideChange', function(swiperInstance) {
+        updateHeaderFromActiveSlide(swiperInstance);
+      });
+
+      // Ensure header state is correct after initial layout
+      updateHeaderFromActiveSlide(swiper);
+
+      sliderEl._swiperInstance = swiper;
+    }
+
+    // Initialize on page load
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        initMenCollectionSlider(document);
+      });
+    } else {
+      initMenCollectionSlider(document);
+    }
+
+    // Re-initialize on Shopify section load/reload (for theme editor)
+    document.addEventListener('shopify:section:load', function(event) {
+      if (event.target.querySelector('.custom-collection-wrap')) {
+        setTimeout(function() {
+          initMenCollectionSlider(event.target);
+        }, 100);
+      }
+    });
+  })();
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Men Collection Template",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image_block",
+      "name": "Image Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "block_image",
+          "label": "Block Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_block_image",
+          "label": "Mobile Block Image"
+        },
+        {
+          "type": "text",
+          "id": "block_title",
+          "label": "Title"
+        },
+        {
+          "type": "url",
+          "id": "block_link",
+          "label": "Redirect Link"
+        },
+        {
+          "type": "select",
+          "id": "header_style",
+          "label": "Header Style",
+          "options": [
+            {
+              "value": "light",
+              "label": "Light"
+            },
+            {
+              "value": "dark",
+              "label": "Dark"
+            }
+          ],
+          "default": "light"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Men Collection Template"
+    }
+  ]
+}
+{% endschema %}

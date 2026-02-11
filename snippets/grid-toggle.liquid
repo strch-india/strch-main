@@ -1,0 +1,50 @@
+{% liquid
+  assign default_columns = default_columns | default: 4
+  assign extra_classes = extra_classes | default: ''
+  if grid_options == blank
+    if extra_classes contains 'grid-toggle--mobile'
+      assign grid_options = '1,2,4' | split: ','
+    else
+      assign grid_options = '2,4,8' | split: ','
+    endif
+  else
+    assign grid_options = grid_options | split: ','
+  endif
+%}
+
+<div
+  class="grid-toggle grid-toggle--icons {{ extra_classes }}"
+  data-grid-toggle-wrapper
+  data-grid-default="{{ default_columns }}"
+>
+  {% for option in grid_options %}
+    <button
+      type="button"
+      class="grid-toggle__button{% if option == default_columns %} grid-toggle__button--active{% endif %}"
+      data-grid-toggle="{{ option }}"
+      aria-label="Change to {{ option }} column grid layout"
+      aria-pressed="{% if option == default_columns %}true{% else %}false{% endif %}"
+    >
+      {% if option == '1' %}
+        <svg viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18.0792 1H1V19.2178H18.0792V1Z" stroke="currentColor" stroke-width="0.910891"></path>
+        </svg>
+      {% elsif option == '2' %}
+        <svg viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18.0792 1H1V19.2178H18.0792V1Z" stroke="currentColor" stroke-width="0.910891"></path>
+        </svg>
+      {% elsif option == '4' %}
+        <svg viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18.0792 1H1V19.2178H18.0792V1Z" stroke="currentColor" stroke-width="0.910891"></path>
+          <line x1="9.54001" y1="1" x2="9.54001" y2="19.2178" stroke="currentColor" stroke-width="1.13861"></line>
+        </svg>
+      {% elsif option == '8' %}
+        <svg viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.9991 1H0.919922V19.2178H17.9991V1Z" stroke="currentColor" stroke-width="0.910891"></path>
+          <line x1="9.45993" y1="1" x2="9.45993" y2="19.2178" stroke="currentColor" stroke-width="1.13861"></line>
+          <path d="M0.920898 10.1094L18.0001 10.1094" stroke="currentColor" stroke-width="1.13861"></path>
+        </svg>
+      {% endif %}
+    </button>
+  {% endfor %}
+</div>

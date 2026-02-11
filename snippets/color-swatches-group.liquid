@@ -1,0 +1,92 @@
+{% comment %}
+  Renders a products list from the color group/metafield
+
+  Accepts:
+  - product: {Object} product (required)
+  - media_aspect_ratio: {String} Size of the product image card. Values are "square" and "portrait". Default is "square" (optional)
+  - image_shape: {String} Image mask to apply to the product image card. Values are "arch", "blob", "chevronleft", "chevronright", "diamond", "parallelogram", and "round". (optional)
+  - show_secondary_image: {Boolean} Show the secondary image on hover. Default: false (optional)
+  - show_vendor: {Boolean} Show the product vendor. Default: false
+  - show_rating: {Boolean} Show the product rating. Default: false
+  - quick_add: {Boolean} Show the quick add button.
+
+  Usage:
+  {% render 'color-swatches-group', product:product, show_vendor: section.settings.show_vendor %}
+{% endcomment %}
+
+{% assign current_product_in_group = false %}
+{% assign related_color_products = product.metafields.product.related_color_product | default:product.metafields.custom.related_color_product %}
+
+{% assign related_colors_metaobject = product.metafields.custom.color_group.value | default:product.metafields.product.color_group.value %}
+{% assign metaobject_color_products = related_colors_metaobject.product.value | default:related_colors_metaobject.products.value %}
+{% assign color_products = related_color_products.value | default:metaobject_color_products %}
+
+{% comment %} {{ color_products | json }} {% endcomment %}
+{% if color_products and color_products.size > 0 %}
+    <variant-selects data-href-more-option="{{ product.url }}" class="color-swatches" id="variant-product-selects-template--{{ section.id }}__main" data-section="template--product-{{ section.id }}__main" data-ele="variant-product-selects" data-ele-type="{{ location }}" style="display:none">
+      <fieldset class="js product-form__input product-form__input--pill">
+          <legend class="form__label">{{ block.setting.option_heading | default: 'Colors' }}</legend>
+          <div class="variant-product-options-container" data-ele="variant-product-options-container">
+            {% for referenced_product in color_products %}
+                {% if product.id == referenced_product.id %}
+                    {% assign current_product_in_group = true %}
+                {% endif %}
+                {% render 'color-swatches-group-snippet', 
+                  product: product,
+                  referenced_product: referenced_product,
+                  media_aspect_ratio: media_aspect_ratio,
+                  image_shape: image_shape,
+                  show_secondary_image: show_secondary_image,
+                  show_vendor: show_vendor,
+                  show_rating: show_rating,
+                  quick_add: quick_add 
+                %}
+            {% endfor %}
+            {% if current_product_in_group == false %}
+              {% render 'color-swatches-group-snippet', 
+                product: product,
+                referenced_product: product,
+                media_aspect_ratio: media_aspect_ratio,
+                image_shape: image_shape,
+                show_secondary_image: show_secondary_image,
+                show_vendor: show_vendor,
+                show_rating: show_rating,
+                quick_add: quick_add 
+              %}
+            {% endif %}
+          </div>
+      </fieldset>
+    </variant-selects>
+{% endif %}
+<script type="application/json" data-product-variants>
+  {{ product.variants | json }}
+</script>
+
+
+<script>
+  (function () {
+    function generateKey() {
+      return Date.now() + '-' + Math.random().toString(36).slice(2, 8);
+    }
+
+    const cacheKey = generateKey();
+
+    // Load JS module
+    if (!document.getElementById('color-swatch-group--js')) {
+      const js = document.createElement('script');
+      js.id = 'color-swatch-group--js';
+      js.type = 'module';
+      js.src = "{{ 'color-swatch-group-script.js' | asset_url }}?key=" + cacheKey;
+      document.head.appendChild(js);
+    }
+
+    // Load CSS
+    if (!document.getElementById('color-swatch-group--css')) {
+      const css = document.createElement('link');
+      css.id = 'color-swatch-group--css';
+      css.rel = 'stylesheet';
+      css.href = "{{ 'color-swatch-group-swatch.css' | asset_url }}?key=" + cacheKey;
+      document.head.appendChild(css);
+    }
+  })();
+</script>
