@@ -4537,6 +4537,13 @@ slideshow-component .slideshow__media:before, slideshow-component .slideshow__me
 .index .logo-animated:not(.shopify-section-header-sticky) .header .header__heading-link{ filter: brightness(1); transition: all ease-in-out .3s; }
 .index .section-header.logo-animated:not(.shopify-section-header-sticky) .icon path{ fill: #fff; transition: all ease-in-out .3s; }
 .index .section-header.logo-animated:not(.shopify-section-header-sticky) .header__icon--menu[aria-expanded="true"] .icon path { fill: #000; transition: all ease-in-out .3s; }
+.faq-question { padding: 10px; display: flex; align-items: center; justify-content: space-between; }
+.faq-item { border: 1px solid #333; margin-bottom: 8px; transition: all ease-in-out .3s; }
+.faq-item[open] .faq-question { border-bottom: 1px solid #333; }
+.faq-answer { padding: 10px; }
+.article-content .faq-answer p, .faq-answer p { margin: 0px; }
+.faq-item .icon-caret:after{ content: '+'; transition: all ease-in-out .3s; font-size: 16px; }
+.faq-item[open] .icon-caret:after{ content: '-'; }
 /* .customer.login{ max-width: 60rem; margin: 0px auto; padding: 27px 30px; } */
 @media screen and (min-width: 990px){
   .search-modal__form{ max-width: 100%; }
