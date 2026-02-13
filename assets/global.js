@@ -430,6 +430,26 @@ class MenuDrawer extends HTMLElement {
     this.bindEvents();
   }
 
+  closeOtherDrawers() {
+    document.querySelectorAll('header-drawer, menu-drawer').forEach((drawer) => {
+      if (drawer === this) return;
+
+      const detailsElement = drawer.querySelector('details[open]');
+      if (!detailsElement) return;
+
+      const summaryElement = detailsElement.querySelector('summary');
+      if (!summaryElement) return;
+
+      if (typeof drawer.closeMenuDrawer === 'function') {
+        // Use a synthetic event object so existing logic still runs
+        drawer.closeMenuDrawer(new Event('close'), summaryElement);
+      } else {
+        detailsElement.removeAttribute('open');
+        summaryElement.setAttribute('aria-expanded', false);
+      }
+    });
+  }
+
   bindEvents() {
     this.querySelectorAll('summary').forEach((summary) =>
       summary.addEventListener('click', this.onSummaryClick.bind(this))
