@@ -1,1 +1,59 @@
-{"sections":{"e9834aec-5827-4b8c-8971-2435291b605a":{"type":"app-ost-container-grid","blocks":{"5c485b1a-e26b-427c-9b29-568113c38307":{"type":"shopify:\/\/apps\/order-status-tracker\/blocks\/search-bar\/66c7eba3-dd2f-4580-9aa0-f17552f0b971","settings":{"searchMode":"orderNumberEmail","searchTitle":"Order Tracker","buttonLabel":"Find Order","SearchPlaceHolder":"","SearchEmailPlaceHolder":"Email","SearchOrderPlaceHolder":"Order Number","SearchErrorMsg":"","PickupMessage":"","PickedUpMessage":"","shippingLocation":false,"carrierInfo":false,"rightToLeft":false,"titleColor":"#000000","buttonLabelColor":"#ffffff","buttonBgColor":"#000000","buttonBgHoverColor":"#000000","formBGColor":"#f3f3f3","timelineColor":"#000000","showFormBGColor":false,"cssStyle":""}}},"block_order":["5c485b1a-e26b-427c-9b29-568113c38307"],"settings":{"visibility":"all_the_time","columns_mobile":1,"columns_tablet":1,"columns_desktop":1,"columns_large":1,"columns_xlarge":1,"columns_2xlarge":1,"cssStyle":""}}},"order":["e9834aec-5827-4b8c-8971-2435291b605a"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "e9834aec-5827-4b8c-8971-2435291b605a": {
+      "type": "app-ost-container-grid",
+      "blocks": {
+        "5c485b1a-e26b-427c-9b29-568113c38307": {
+          "type": "shopify://apps/order-status-tracker/blocks/search-bar/66c7eba3-dd2f-4580-9aa0-f17552f0b971",
+          "settings": {
+            "searchMode": "orderNumberEmail",
+            "searchTitle": "Order Tracker",
+            "buttonLabel": "Find Order",
+            "SearchPlaceHolder": "",
+            "SearchEmailPlaceHolder": "Email",
+            "SearchOrderPlaceHolder": "Order Number",
+            "SearchErrorMsg": "",
+            "PickupMessage": "",
+            "PickedUpMessage": "",
+            "shippingLocation": false,
+            "carrierInfo": false,
+            "rightToLeft": false,
+            "titleColor": "#000000",
+            "buttonLabelColor": "#ffffff",
+            "buttonBgColor": "#000000",
+            "buttonBgHoverColor": "#000000",
+            "formBGColor": "#f3f3f3",
+            "timelineColor": "#000000",
+            "showFormBGColor": false,
+            "cssStyle": ""
+          }
+        }
+      },
+      "block_order": [
+        "5c485b1a-e26b-427c-9b29-568113c38307"
+      ],
+      "settings": {
+        "visibility": "all_the_time",
+        "columns_mobile": 1,
+        "columns_tablet": 1,
+        "columns_desktop": 1,
+        "columns_large": 1,
+        "columns_xlarge": 1,
+        "columns_2xlarge": 1,
+        "cssStyle": ""
+      }
+    }
+  },
+  "order": [
+    "e9834aec-5827-4b8c-8971-2435291b605a"
+  ]
+}

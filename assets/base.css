@@ -3866,7 +3866,7 @@ li.grid__item.show-variants { overflow: visible; position: relative; z-index: 9;
 li.grid__item.show-variants .card-wrapper{ z-index: 9; border: 2px solid; position: absolute; width: 100%; }
 li.grid__item.show-variants .card .variant-image-slider-container{ display: block; }
 .collection { overflow: visible!important; position: relative!important; }
-.collection .grid{ margin: 0px; row-gap: 0px; column-gap: 0px; }
+.collection .grid{ margin: 0px; gap: 4px; padding: 4px; }
 .facets-wrapper { padding: 1.62rem 3rem; }
 .facets .facets__form{ grid-template-columns: 1fr 3fr max-content; }
 .facets .facet-filters{ grid-column: 3; }
@@ -4407,9 +4407,9 @@ form .product-form__buttons button{ transition: all ease-in-out .4s; border: 2px
 .shopify-payment-button__button--unbranded:hover:after{ box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset)) rgba(var(--color-button-text), var(--border-opacity)), 0 0 0 var(--buttons-border-width) rgba(var(--color-button), var(--alpha-button-background)); }
 form .shopify-payment-button__button--unbranded:hover, form .shopify-payment-button__button--unbranded:hover:not([disabled]){ color: #000; background: #fff; }
 .product-form__buttons button:hover span { color: #fff; position: relative; z-index: 1; }
-.product-grid-container[data-grid-columns-desktop="8"] .collection .grid__item{ width: calc(100% / 8); max-width: calc(100% / 8); }
-.product-grid-container[data-grid-columns-desktop="4"] .collection .grid__item{ width: calc(100% / 4); max-width: calc(100% / 4); }
-.product-grid-container[data-grid-columns-desktop="2"] .collection .grid__item{ width: calc(100% / 2); max-width: calc(100% / 2); }
+.product-grid-container[data-grid-columns-desktop="8"] .collection .grid__item{ width: calc(100% / 8 - 8px); max-width: calc(100% / 8 - 8px); }
+.product-grid-container[data-grid-columns-desktop="4"] .collection .grid__item{ width: calc(100% / 4 - 8px); max-width: calc(100% / 4 - 8px); }
+.product-grid-container[data-grid-columns-desktop="2"] .collection .grid__item{ width: calc(100% / 2 - 8px); max-width: calc(100% / 2 - 8px); }
 .mobile-facets__wrapper{ gap: 70px; align-items: center; }
 .facets-container.facets-container-drawer{ padding: 0px; }
 .facets .facets__form{ margin: 0px; }

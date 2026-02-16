@@ -1,1 +1,91 @@
-{"sections":{"main":{"type":"women-collection-template","blocks":{"image_block_9aMKYR":{"type":"image_block","settings":{"block_image":"shopify:\/\/shop_images\/Tops.jpg","mobile_block_image":"shopify:\/\/shop_images\/Tops_1.jpg","block_title":"","block_link":"shopify:\/\/collections\/women-tops","header_style":"dark"}},"image_block_3WffnX":{"type":"image_block","settings":{"block_image":"shopify:\/\/shop_images\/Sports_Bra_1.jpg","mobile_block_image":"shopify:\/\/shop_images\/Sports_Bra_2.jpg","block_title":"","block_link":"shopify:\/\/collections\/sportsbra","header_style":"light"}},"image_block_jb8nzr":{"type":"image_block","disabled":true,"settings":{"block_image":"shopify:\/\/shop_images\/Pants-Desktop.jpg","mobile_block_image":"shopify:\/\/shop_images\/Pants-Mobile.jpg","block_title":"","block_link":"shopify:\/\/collections\/women-track-pants","header_style":"light"}},"image_block_nbGfCF":{"type":"image_block","settings":{"block_image":"shopify:\/\/shop_images\/Leggings.jpg","mobile_block_image":"shopify:\/\/shop_images\/Leggings1.jpg","block_title":"","block_link":"shopify:\/\/collections\/women-leggings","header_style":"dark"}},"image_block_aDhh7U":{"type":"image_block","settings":{"block_image":"shopify:\/\/shop_images\/Shorts-2.jpg","mobile_block_image":"shopify:\/\/shop_images\/Shorts-1.jpg","block_title":"","block_link":"shopify:\/\/collections\/womens-shorts-and-skorts","header_style":"dark"}},"image_block_Egpqk4":{"type":"image_block","settings":{"block_image":"shopify:\/\/shop_images\/Jumpsuit.jpg","mobile_block_image":"shopify:\/\/shop_images\/Jumpsuit_1.jpg","block_title":"","block_link":"shopify:\/\/collections\/women-jumpsuits","header_style":"dark"}}},"block_order":["image_block_9aMKYR","image_block_3WffnX","image_block_jb8nzr","image_block_nbGfCF","image_block_aDhh7U","image_block_Egpqk4"],"settings":{}}},"order":["main"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "women-collection-template",
+      "blocks": {
+        "image_block_9aMKYR": {
+          "type": "image_block",
+          "settings": {
+            "block_image": "shopify://shop_images/Tops.jpg",
+            "mobile_block_image": "shopify://shop_images/Tops_1.jpg",
+            "block_title": "",
+            "block_link": "shopify://collections/women-tops",
+            "header_style": "dark"
+          }
+        },
+        "image_block_3WffnX": {
+          "type": "image_block",
+          "settings": {
+            "block_image": "shopify://shop_images/Sports_Bra_1.jpg",
+            "mobile_block_image": "shopify://shop_images/Sports_Bra_2.jpg",
+            "block_title": "",
+            "block_link": "shopify://collections/sportsbra",
+            "header_style": "light"
+          }
+        },
+        "image_block_jb8nzr": {
+          "type": "image_block",
+          "disabled": true,
+          "settings": {
+            "block_image": "shopify://shop_images/Pants-Desktop.jpg",
+            "mobile_block_image": "shopify://shop_images/Pants-Mobile.jpg",
+            "block_title": "",
+            "block_link": "shopify://collections/women-track-pants",
+            "header_style": "light"
+          }
+        },
+        "image_block_nbGfCF": {
+          "type": "image_block",
+          "settings": {
+            "block_image": "shopify://shop_images/Leggings.jpg",
+            "mobile_block_image": "shopify://shop_images/Leggings1.jpg",
+            "block_title": "",
+            "block_link": "shopify://collections/women-leggings",
+            "header_style": "dark"
+          }
+        },
+        "image_block_aDhh7U": {
+          "type": "image_block",
+          "settings": {
+            "block_image": "shopify://shop_images/Shorts-2.jpg",
+            "mobile_block_image": "shopify://shop_images/Shorts-1.jpg",
+            "block_title": "",
+            "block_link": "shopify://collections/womens-shorts-and-skorts",
+            "header_style": "dark"
+          }
+        },
+        "image_block_Egpqk4": {
+          "type": "image_block",
+          "settings": {
+            "block_image": "shopify://shop_images/Jumpsuit.jpg",
+            "mobile_block_image": "shopify://shop_images/Jumpsuit_1.jpg",
+            "block_title": "",
+            "block_link": "shopify://collections/women-jumpsuits",
+            "header_style": "dark"
+          }
+        }
+      },
+      "block_order": [
+        "image_block_9aMKYR",
+        "image_block_3WffnX",
+        "image_block_jb8nzr",
+        "image_block_nbGfCF",
+        "image_block_aDhh7U",
+        "image_block_Egpqk4"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
