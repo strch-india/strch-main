@@ -2537,7 +2537,7 @@ input[type='checkbox'] {
 .two-media-wrapper {
   display: flex;
   flex-wrap: nowrap;
-  /* height: 100vh; */
+  height: 100vh;
   overflow: hidden;
   display: flex;
 }
