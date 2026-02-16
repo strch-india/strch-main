@@ -3955,7 +3955,7 @@ xb-wishlist-button-collection .xb-wishlist-button-collection span{ display: flex
 .card-wrapper .product-form__input--pill .vairant-swatch input[type=radio]+label{ border: 1px solid #ccc; padding: 10px 24px; transition: all ease-in-out .2s; margin: 0px; }
 /* .card-wrapper .product-form__input--pill .vairant-swatch input[type=radio]:checked+label.variant-options, .card-wrapper .product-form__input--pill .vairant-swatch input[type=radio]:hover+label.variant-options{ border: 1px solid #000; } */
 .variant-picker-container{ display: flex; align-items: center; gap: 8px; }
-.vairant-swatch{ display: flex; background: #fff;color: #000;padding: 10px;transition: .3s border ease-in;}
+.vairant-swatch{ display: flex; background: #fff;color: #000;padding: 6px;transition: .3s border ease-in;}
 .product__media-list.grid{ column-gap: 0px; row-gap: 0px; }
 .product__media-list .product-media-container.constrain-height.media-fit-contain{ width: 100%; height: 100%; }
 .product--stacked .product__media-list li.product__media-item, .product:not(.product--columns) .grid__item .product__media-list .product__media-item:first-child, .product:not(.product--columns) .grid__item .product__media-list .product__media-item--full { width: 50%; max-width: 50%; }
@@ -3998,11 +3998,11 @@ a.product__text { display: block; text-decoration: none; color: rgba(var(--color
 .card__information .card__heading{ font-weight: 500; font-size: 1.5rem; text-transform: uppercase; }
 .card__information .price{ font-size: 1.4rem; }
 .card-wrapper [data-ele="variant-product-selects"]{ padding: 1rem 1rem 0px; }
-.card-wrapper variant-selects.variant-selector-atc { position: absolute; bottom: 10px; left: 10px; width: calc(100% - 20px); display: flex; flex-direction: column; align-items: center; justify-content: center; flex-wrap: wrap; padding: 8px 6px; opacity: 0; z-index: 3; min-height: 58px; background-color: #f3f3f3; max-width: 100%; transition: all ease-in-out .5s; }
+.card-wrapper variant-selects.variant-selector-atc { position: absolute; bottom: 10px; left: 10px; width: calc(100% - 20px); display: flex; flex-direction: column; align-items: center; justify-content: center; flex-wrap: wrap; padding: 8px 6px; opacity: 0; z-index: 3; min-height: 58px; backdrop-filter: blur(1px); background-color: #63636380; max-width: 100%; transition: all ease-in-out .5s; }
 .card-wrapper variant-selects.variant-selector-atc legend { font-size: 16px; line-height: 16px; letter-spacing: 1px; text-transform: uppercase; margin: 0 auto; color: #fff; }
 .card-wrapper .variant-picker-container{ gap: 6px; display: flex; justify-content: space-between; align-items: center; margin: 0 auto; flex-wrap: wrap; width: max-content; }
 .product-grid-container[data-grid-columns-desktop="8"] .collection .grid__item .card-wrapper .variant-picker-container{ gap: 2px; }
-.card-wrapper .product-form__input--pill .variant-picker-container input[type=radio]+label{ text-align: center; border: 1px solid transparent; color: #000; background-color: transparent; padding: 0 5px; min-width: 25px; height: 25px; text-transform: uppercase; display: inline-flex; align-items: center; justify-content: center; }
+.card-wrapper .product-form__input--pill .variant-picker-container input[type=radio]+label{ text-align: center; border: 1px solid transparent; color: #000; background-color: transparent; padding: 0 5px; height: 25px; text-transform: uppercase; display: inline-flex; align-items: center; justify-content: center; }
 .grid--8-col-desktop .card-wrapper .product-form__input--pill .variant-picker-container input[type=radio]+label{ padding: 0px; font-size: 14px; min-width: 22px; }
 /* .card-wrapper .product-form__input--pill .variant-picker-container input[type=radio]+label:hover, .card-wrapper .product-form__input--pill .vairant-swatch input[type=radio]:checked+label.variant-options, .card-wrapper .product-form__input--pill .vairant-swatch input[type=radio]:hover+label.variant-options{ background: #dfdfdf66; color: #fff; border: 1px solid #000; } */
 .vairant-swatch:hover{border: 1px solid #000;transition: .3s hover ease;}
