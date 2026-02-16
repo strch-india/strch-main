@@ -4691,7 +4691,7 @@ slideshow-component .slideshow__media:before, slideshow-component .slideshow__me
   .card-wrapper [data-ele=variant-product-selects] { overflow-x: auto; }
   .logo-animation .header__heading-link img { width: 100%; }
   .section-header.logo-animated .header__heading-link { width: 50% !important; }
-  .two-media-wrapper .media-item{width:100% !important;}
+  .two-media-wrapper .media-item{width:100% !important;height: 100vh;}
   .section-header .inner-logo .header__heading-link{ width: 26% !important; position: initial; transform: none; }
   table.cart-items .cart-item td { border: none;}
   table.cart-items .cart-item:last-child td{ border-bottom: none; }
