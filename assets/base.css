@@ -4578,6 +4578,7 @@ slideshow-component .slideshow__media:before, slideshow-component .slideshow__me
 }
 @media screen and (max-width: 750px) {
   .cart-drawer .cart-items .cart-item{ grid-template: repeat(1,auto) / repeat(3,1fr); }
+  .index .section-header.logo-animated:not(.shopify-section-header-sticky){top:30px;}
 }
 @media screen and (max-width: 749px) {
   .product-grid-container[data-grid-columns-desktop="4"] .collection .grid__item{ width: calc(100% / 2 - 8px); max-width: calc(100% / 2 - 8px); }
