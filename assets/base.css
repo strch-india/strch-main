@@ -4536,7 +4536,7 @@ slideshow-component .slideshow__media:before, slideshow-component .slideshow__me
 .slider-component-full-width .slider--desktop:after{ content: none; }
 .facets-wrapper{ position: sticky; top: 64px; z-index: 2; background: #fff; }
 .overflow-hidden-desktop .facets-wrapper { z-index: 0; }
-.index .section-header.logo-animated:not(.shopify-section-header-sticky) { position: fixed; transition: all ease-in-out .3s; }
+.index .section-header.logo-animated:not(.shopify-section-header-sticky) { position: fixed; transition: all ease-in-out .3s; top:40px;}
 .index .logo-animated:not(.shopify-section-header-sticky) .header .header__heading-link{ filter: brightness(1); transition: all ease-in-out .3s; }
 .index .section-header.logo-animated:not(.shopify-section-header-sticky) .icon path{ fill: #fff; transition: all ease-in-out .3s; }
 .index .section-header.logo-animated:not(.shopify-section-header-sticky) .header__icon--menu[aria-expanded="true"] .icon path { fill: #000; transition: all ease-in-out .3s; }
