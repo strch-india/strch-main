@@ -95,7 +95,7 @@
           "type": "media_block",
           "settings": {
             "image": "shopify://shop_images/left.jpg",
-            "video": "shopify://files/videos/Left-Video.mp4",
+            "video": "shopify://files/videos/720x1080.mp4",
             "heading": "",
             "subheading": "",
             "button_text": "SHOP ALL",
