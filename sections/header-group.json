@@ -13,9 +13,26 @@
   "sections": {
     "ticker_8BnxDc": {
       "type": "ticker",
+      "blocks": {
+        "text_rjFpa4": {
+          "type": "text",
+          "settings": {
+            "ticker_text": "STRCH Goodwill Boundaries, Every Boundary Scored - A Responsibility Taken."
+          }
+        },
+        "text_decWYr": {
+          "type": "text",
+          "settings": {
+            "ticker_text": "STRCH Goodwill Boundaries, Every Boundary Scored - A Responsibility Taken."
+          }
+        }
+      },
+      "block_order": [
+        "text_rjFpa4",
+        "text_decWYr"
+      ],
       "name": "Scrolling Ticker",
       "settings": {
-        "ticker_text": "STRCH Goodwill Boundaries, Every Boundary Scored - A Responsibility Taken.",
         "speed": 20,
         "bg_color": "#cffa51",
         "text_color": "#121212",
