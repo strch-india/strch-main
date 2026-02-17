@@ -96,12 +96,14 @@
 <div class="ticker-{{ section.id }}">
   <div class="ticker-{{ section.id }}__inner">
     {%- for block in section.blocks -%}
+        ●
     <span class="ticker-{{ section.id }}__text">
       {{ block.settings.ticker_text }}
     </span>
 {%- endfor -%}
     {%- for block in section.blocks -%}
     <span class="ticker-{{ section.id }}__text">
+        ●
       {{ block.settings.ticker_text }}
     </span>
     {%- endfor -%}
