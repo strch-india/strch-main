@@ -3,12 +3,6 @@
   "name": "Scrolling Ticker",
   "settings": [
     {
-      "type": "text",
-      "id": "ticker_text",
-      "label": "Ticker Text",
-      "default": "Free Shipping on orders above ₹999  •  Easy Returns  •  COD Available  •  Premium Quality Guaranteed"
-    },
-    {
       "type": "range",
       "id": "speed",
       "label": "Animation Speed (seconds)",
@@ -39,6 +33,21 @@
       "default": 16
     }
   ],
+
+    "blocks": [
+{
+"type": "text",
+"name":"Ticker content",
+"settings": [
+    {
+      "type": "text",
+      "id": "ticker_text",
+      "label": "Ticker Text",
+      "default": "STRCH Goodwill Boundaries, Every Boundary Scored - A Responsibility Taken."
+    }
+]
+}
+],
   "presets": [
     {
       "name": "Scrolling Ticker"
@@ -86,11 +95,15 @@
 
 <div class="ticker-{{ section.id }}">
   <div class="ticker-{{ section.id }}__inner">
+    {%- for block in section.blocks -%}
     <span class="ticker-{{ section.id }}__text">
-      {{ section.settings.ticker_text }}
+      {{ block.settings.ticker_text }}
     </span>
+{%- endfor -%}
+    {%- for block in section.blocks -%}
     <span class="ticker-{{ section.id }}__text">
-      {{ section.settings.ticker_text }}
+      {{ block.settings.ticker_text }}
     </span>
+    {%- endfor -%}
   </div>
 </div>
