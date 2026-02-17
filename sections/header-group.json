@@ -20,6 +20,12 @@
             "ticker_text": "STRCH Goodwill Boundaries, Every Boundary Scored - A Responsibility Taken."
           }
         },
+        "text_LXCbV3": {
+          "type": "text",
+          "settings": {
+            "ticker_text": "STRCH Goodwill Boundaries, Every Boundary Scored - A Responsibility Taken."
+          }
+        },
         "text_decWYr": {
           "type": "text",
           "settings": {
@@ -29,11 +35,12 @@
       },
       "block_order": [
         "text_rjFpa4",
+        "text_LXCbV3",
         "text_decWYr"
       ],
       "name": "Scrolling Ticker",
       "settings": {
-        "speed": 20,
+        "speed": 40,
         "bg_color": "#cffa51",
         "text_color": "#121212",
         "font_size": 16
