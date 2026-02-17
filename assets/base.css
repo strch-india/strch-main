@@ -4706,9 +4706,9 @@ slideshow-component .slideshow__media:before, slideshow-component .slideshow__me
   .accordion__title{ font-size: 18px; }
   .header__heading, .header__heading-link{ text-align: left; margin-left: 0px; justify-self: start; }
   .collection .grid{justify-content: center;}
-  .product-grid-container[data-grid-columns-desktop="4"] .collection .grid__item{ width: calc(100% / 2 - 4px); max-width: calc(100% / 2 - 4px); }
+  .product-grid-container[data-grid-columns-desktop="4"] .collection .grid__item{ width: calc(100% / 2 - 8px); max-width: calc(100% / 2 - 8px); }
   .product-grid-container[data-grid-columns-desktop="2"] .collection .grid__item{ width: 100%; max-width: 100%; }
-  .product-grid-container[data-grid-columns-desktop="8"] .collection .grid__item{ width: calc(100% / 3 - 4px); max-width: calc(100% / 3 - 4px); }
+  .product-grid-container[data-grid-columns-desktop="8"] .collection .grid__item{ width: calc(100% / 3 - 8px); max-width: calc(100% / 3 - 8px); }
   .collection .grid__item .card__inner { height: 420px; }
   .product-grid-container[data-grid-columns-desktop="8"] .card__inner{ height: 340px; }
   .product-grid-container[data-grid-columns-desktop="2"] .card__inner{ height: auto; }
