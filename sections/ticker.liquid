@@ -1,0 +1,96 @@
+{% schema %}
+{
+  "name": "Scrolling Ticker",
+  "settings": [
+    {
+      "type": "text",
+      "id": "ticker_text",
+      "label": "Ticker Text",
+      "default": "Free Shipping on orders above ₹999  •  Easy Returns  •  COD Available  •  Premium Quality Guaranteed"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Animation Speed (seconds)",
+      "min": 5,
+      "max": 60,
+      "step": 1,
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Font Size (px)",
+      "min": 12,
+      "max": 36,
+      "step": 1,
+      "default": 16
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scrolling Ticker"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .ticker-{{ section.id }} {
+    overflow: hidden;
+    white-space: nowrap;
+    background: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+    width: 100%;
+  }
+
+  .ticker-{{ section.id }}__inner {
+    display: inline-flex;
+    align-items: center;
+    animation: ticker-scroll-{{ section.id }} linear infinite;
+    animation-duration: {{ section.settings.speed }}s;
+  }
+
+  .ticker-{{ section.id }}__text {
+    font-size: {{ section.settings.font_size }}px;
+    padding: 12px 2rem;
+    display: inline-block;
+  }
+
+  @keyframes ticker-scroll-{{ section.id }} {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Pause on hover */
+  .ticker-{{ section.id }}:hover .ticker-{{ section.id }}__inner {
+    animation-play-state: paused;
+  }
+</style>
+
+<div class="ticker-{{ section.id }}">
+  <div class="ticker-{{ section.id }}__inner">
+    <span class="ticker-{{ section.id }}__text">
+      {{ section.settings.ticker_text }}
+    </span>
+    <span class="ticker-{{ section.id }}__text">
+      {{ section.settings.ticker_text }}
+    </span>
+  </div>
+</div>
