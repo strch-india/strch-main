@@ -374,11 +374,11 @@ form .product-form__buttons {
 
 xb-wishlist-button {
   max-width: 44rem !important;
-  display: block;
+  display: block !important;
 }
 
 xb-wishlist-button button {
-  border-radius: 0;
+  border-radius: 0 !important;
 }
 
 .product-form__buttons .fake-qty {
