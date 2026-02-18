@@ -11,13 +11,24 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "cricket_scores_yxFBYD": {
+      "type": "cricket-scores",
+      "name": "Boundary Counter",
+      "settings": {
+        "title": "",
+        "boundary_title": "",
+        "sixes_title": ""
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "cricket_scores_yxFBYD"
   ]
 }
