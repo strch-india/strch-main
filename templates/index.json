@@ -1,1 +1,242 @@
-{"sections":{"slideshow_37dpzw":{"type":"slideshow","blocks":{"slide_cMHWwD":{"type":"slide","settings":{"image":"shopify:\/\/shop_images\/Shop_all_1.jpg","mobile_image":"shopify:\/\/shop_images\/mobile_shop_all_banner.jpg","image_overlay_opacity":0,"heading":"","heading_size":"h1","subheading":"","button_label":"","link":"shopify:\/\/collections\/shop-all","button_style_secondary":false,"show_text_box":true,"box_align":"middle-center","text_alignment":"center","text_alignment_mobile":"center","color_scheme":""}},"slide_MMmz3Y":{"type":"slide","settings":{"image":"shopify:\/\/shop_images\/men_2.jpg","mobile_image":"shopify:\/\/shop_images\/MEN-MOBILEl_banner.jpg","image_overlay_opacity":0,"heading":"","heading_size":"h1","subheading":"","button_label":"","link":"shopify:\/\/collections\/men-s-activewear","button_style_secondary":false,"show_text_box":true,"box_align":"middle-center","text_alignment":"center","text_alignment_mobile":"center","color_scheme":""}},"slide_CQWqqf":{"type":"slide","settings":{"image":"shopify:\/\/shop_images\/women_2.jpg","mobile_image":"shopify:\/\/shop_images\/women-banner.jpg","image_overlay_opacity":0,"heading":"","heading_size":"h1","subheading":"","button_label":"","link":"shopify:\/\/collections\/women-activewear","button_style_secondary":false,"show_text_box":true,"box_align":"middle-center","text_alignment":"center","text_alignment_mobile":"center","color_scheme":""}}},"block_order":["slide_cMHWwD","slide_MMmz3Y","slide_CQWqqf"],"disabled":true,"name":"t:sections.slideshow.presets.name","settings":{"layout":"full_bleed","slide_height":"adapt_image","slider_visual":"dots","auto_rotate":false,"change_slides_speed":5,"image_behavior":"none","show_text_below":true,"accessibility_info":""}},"hero_banner_e7HV76":{"type":"hero-banner","blocks":{"media_block_mT4n8N":{"type":"media_block","settings":{"image":"shopify:\/\/shop_images\/left.jpg","video":"shopify:\/\/files\/videos\/Left-Video.mp4","heading":"","subheading":"","button_text":"SHOP ALL","link":"shopify:\/\/collections\/shop-all"}},"media_block_zeCBhf":{"type":"media_block","settings":{"image":"shopify:\/\/shop_images\/Shop_all-MOBILE_-_Copy.jpg","heading":"","subheading":"","button_text":"EXPLORE ACTIVEWEAR","link":"shopify:\/\/collections\/shop-all"}}},"block_order":["media_block_mT4n8N","media_block_zeCBhf"],"name":"Custom Hero Banner","settings":{}},"featured_collection":{"type":"featured-collection","disabled":true,"settings":{"collection":"all","products_to_show":8,"title":"Featured products","heading_size":"h2","description":"","show_description":false,"description_style":"body","columns_desktop":4,"enable_desktop_slider":false,"full_width":false,"show_view_all":true,"view_all_style":"solid","color_scheme":"scheme-1","image_ratio":"adapt","image_shape":"default","show_secondary_image":true,"show_vendor":false,"show_rating":false,"quick_add":"none","columns_mobile":"2","swipe_on_mobile":false,"padding_top":44,"padding_bottom":36}},"shop_category_Kb7XGD":{"type":"shop-category","blocks":{"women_block_FMHw6r":{"type":"women_block","settings":{"image":"shopify:\/\/shop_images\/1-Womens_Shorts.jpg","link":"shopify:\/\/collections\/womens-shorts-and-skorts","label":"Shorts"}},"women_block_MQaQkc":{"type":"women_block","settings":{"image":"shopify:\/\/shop_images\/2-Womens_Top.jpg","link":"shopify:\/\/collections\/women-tops","label":"Tops"}},"women_block_LNVm6k":{"type":"women_block","settings":{"image":"shopify:\/\/shop_images\/3-Womens_Flare_pants.jpg","link":"shopify:\/\/collections\/women-leggings","label":"Leggings"}},"women_block_HtXLgF":{"type":"women_block","settings":{"image":"shopify:\/\/shop_images\/4-Womens_Sports_bra.jpg","link":"shopify:\/\/collections\/sportsbra","label":"Sports Bras"}},"men_block_fWA8Eg":{"type":"men_block","settings":{"image":"shopify:\/\/shop_images\/1-Mens_Tees_tanks.jpg","link":"shopify:\/\/collections\/men-top-wear","label":"Tees & Tanks"}},"men_block_bt99pL":{"type":"men_block","settings":{"image":"shopify:\/\/shop_images\/2-Mens_Shorts.jpg","link":"shopify:\/\/collections\/mens-comfort-shorts","label":"Shorts"}},"men_block_EbnAR3":{"type":"men_block","settings":{"image":"shopify:\/\/shop_images\/3-Mens_Polo.jpg","link":"shopify:\/\/collections\/men-polo-shirt","label":"Polo Tshirts"}},"men_block_HxVmWK":{"type":"men_block","settings":{"image":"shopify:\/\/shop_images\/4-_Men_Trackpants.jpg","link":"shopify:\/\/collections\/men-track-pant","label":"Track Pants"}}},"block_order":["women_block_FMHw6r","women_block_MQaQkc","women_block_LNVm6k","women_block_HtXLgF","men_block_fWA8Eg","men_block_bt99pL","men_block_EbnAR3","men_block_HxVmWK"],"name":"Shop By Category","settings":{"heading":"Shop By Category"}}},"order":["slideshow_37dpzw","hero_banner_e7HV76","featured_collection","shop_category_Kb7XGD"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "slideshow_37dpzw": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_cMHWwD": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Shop_all_1.jpg",
+            "mobile_image": "shopify://shop_images/mobile_shop_all_banner.jpg",
+            "image_overlay_opacity": 0,
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "link": "shopify://collections/shop-all",
+            "button_style_secondary": false,
+            "show_text_box": true,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": ""
+          }
+        },
+        "slide_MMmz3Y": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/men_2.jpg",
+            "mobile_image": "shopify://shop_images/MEN-MOBILEl_banner.jpg",
+            "image_overlay_opacity": 0,
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "link": "shopify://collections/men-s-activewear",
+            "button_style_secondary": false,
+            "show_text_box": true,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": ""
+          }
+        },
+        "slide_CQWqqf": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/women_2.jpg",
+            "mobile_image": "shopify://shop_images/women-banner.jpg",
+            "image_overlay_opacity": 0,
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "link": "shopify://collections/women-activewear",
+            "button_style_secondary": false,
+            "show_text_box": true,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_cMHWwD",
+        "slide_MMmz3Y",
+        "slide_CQWqqf"
+      ],
+      "disabled": true,
+      "name": "t:sections.slideshow.presets.name",
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "adapt_image",
+        "slider_visual": "dots",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "accessibility_info": ""
+      }
+    },
+    "hero_banner_e7HV76": {
+      "type": "hero-banner",
+      "blocks": {
+        "media_block_mT4n8N": {
+          "type": "media_block",
+          "settings": {
+            "image": "shopify://shop_images/left.jpg",
+            "video": "shopify://files/videos/720x1080.mp4",
+            "heading": "",
+            "subheading": "",
+            "button_text": "SHOP ALL",
+            "link": "shopify://collections/shop-all"
+          }
+        },
+        "media_block_zeCBhf": {
+          "type": "media_block",
+          "settings": {
+            "image": "shopify://shop_images/1_jpg.jpg",
+            "heading": "",
+            "subheading": "",
+            "button_text": "EXPLORE ACTIVEWEAR",
+            "link": "shopify://collections/shop-all"
+          }
+        }
+      },
+      "block_order": [
+        "media_block_mT4n8N",
+        "media_block_zeCBhf"
+      ],
+      "name": "Custom Hero Banner",
+      "settings": {}
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "collection": "all",
+        "products_to_show": 8,
+        "title": "Featured products",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "shop_category_Kb7XGD": {
+      "type": "shop-category",
+      "blocks": {
+        "women_block_FMHw6r": {
+          "type": "women_block",
+          "settings": {
+            "image": "shopify://shop_images/1-Womens_Shorts.jpg",
+            "link": "shopify://collections/womens-shorts-and-skorts",
+            "label": "Shorts"
+          }
+        },
+        "women_block_MQaQkc": {
+          "type": "women_block",
+          "settings": {
+            "image": "shopify://shop_images/2-Womens_Top.jpg",
+            "link": "shopify://collections/women-tops",
+            "label": "Tops"
+          }
+        },
+        "women_block_LNVm6k": {
+          "type": "women_block",
+          "settings": {
+            "image": "shopify://shop_images/3-Womens_Flare_pants.jpg",
+            "link": "shopify://collections/women-leggings",
+            "label": "Leggings"
+          }
+        },
+        "women_block_HtXLgF": {
+          "type": "women_block",
+          "settings": {
+            "image": "shopify://shop_images/4-Womens_Sports_bra.jpg",
+            "link": "shopify://collections/sportsbra",
+            "label": "Sports Bras"
+          }
+        },
+        "men_block_fWA8Eg": {
+          "type": "men_block",
+          "settings": {
+            "image": "shopify://shop_images/1-Mens_Tees_tanks.jpg",
+            "link": "shopify://collections/men-top-wear",
+            "label": "Tees & Tanks"
+          }
+        },
+        "men_block_bt99pL": {
+          "type": "men_block",
+          "settings": {
+            "image": "shopify://shop_images/2-Mens_Shorts.jpg",
+            "link": "shopify://collections/mens-comfort-shorts",
+            "label": "Shorts"
+          }
+        },
+        "men_block_EbnAR3": {
+          "type": "men_block",
+          "settings": {
+            "image": "shopify://shop_images/3-Mens_Polo.jpg",
+            "link": "shopify://collections/men-polo-shirt",
+            "label": "Polo Tshirts"
+          }
+        },
+        "men_block_HxVmWK": {
+          "type": "men_block",
+          "settings": {
+            "image": "shopify://shop_images/4-_Men_Trackpants.jpg",
+            "link": "shopify://collections/men-track-pant",
+            "label": "Track Pants"
+          }
+        }
+      },
+      "block_order": [
+        "women_block_FMHw6r",
+        "women_block_MQaQkc",
+        "women_block_LNVm6k",
+        "women_block_HtXLgF",
+        "men_block_fWA8Eg",
+        "men_block_bt99pL",
+        "men_block_EbnAR3",
+        "men_block_HxVmWK"
+      ],
+      "name": "Shop By Category",
+      "settings": {
+        "heading": "Shop By Category"
+      }
+    }
+  },
+  "order": [
+    "slideshow_37dpzw",
+    "hero_banner_e7HV76",
+    "featured_collection",
+    "shop_category_Kb7XGD"
+  ]
+}

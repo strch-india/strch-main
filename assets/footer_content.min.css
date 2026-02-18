@@ -1,5 +1,6 @@
 .footer_content-section {
-    background-color: rgb(207 250 81 / 30%);
+    /* background-color: rgb(207 250 81 / 30%); */
+    background-color: #fff;
     color: #212121;
     margin-top: 50px
 }

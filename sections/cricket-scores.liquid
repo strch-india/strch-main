@@ -1,0 +1,90 @@
+{%- style -%}
+  #scoreboard-{{ section.id }}{
+    background-image:url('{{ section.settings.bg_image |  image_url }}');
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+    width: 100%;
+    height: 100vh;
+  }
+{%- endstyle -%}
+
+<section
+  class="scoreboard"
+  id="scoreboard={{ section.id }}"
+>
+  <div class="board-left">
+    <p>{{ section.settings.boundary_title }}</p>
+    <p>{{ section.settings.boundary_count }}</p>
+  </div>
+  <div class="board-center">
+    <img src="{{ section.settings.team_icon | image_url }}" width="auto" height="auto" alt="team-india-icon">
+    <div class="total_count">
+      <p>Sets donated</p>
+    </div>
+  </div>
+  <div class="board-right">
+    <p>{{ section.settings.sixes_title }}</p>
+    <p>{{ section.settings.sixes_count }}</p>
+  </div>
+</section>
+
+{%- schema -%}
+{
+  "name": "Boundary Counter",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "image_picker",
+      "id": "team_icon",
+      "label": "Team Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "header",
+      "content": "Boundaries Settings"
+    },
+    {
+      "type": "text",
+      "id": "boundary_title",
+      "label": "Title"
+    },
+    {
+      "type": "number",
+      "id": "boundary_count",
+      "label": "Count"
+    },
+    {
+      "type": "header",
+      "content": "Six'es Settings"
+    },
+    {
+      "type": "text",
+      "id": "sixes_title",
+      "label": "Title"
+    },
+    {
+      "type": "number",
+      "id": "sixes_count",
+      "label": "Count"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Boundary Counter"
+    }
+  ]
+}
+{%- endschema -%}
