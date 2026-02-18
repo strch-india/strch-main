@@ -27,8 +27,10 @@
         "bg_image": "shopify://shop_images/stadium_jpg.jpg",
         "boundary_title": "Fours",
         "boundary_count": 52,
+        "d_boundary_title": "STRCH Garements:",
         "sixes_title": "Sixes",
-        "sixes_count": 27
+        "sixes_count": 27,
+        "d_sixes_title": "STRCH Sets:"
       }
     }
   },
