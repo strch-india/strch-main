@@ -238,7 +238,8 @@
       "settings": {
         "heading": "Frequently Asked Questions",
         "faqs": [
-          "faqs"
+          "faqs",
+          "faq-ghscktoy"
         ]
       }
     }
