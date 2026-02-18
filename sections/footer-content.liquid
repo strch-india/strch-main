@@ -12,18 +12,8 @@
       </header>
       <div class="standard__rte collapableTab wrapper--full" data-aos="hero" data-aos-order="2">
         {{ section.settings.footer_content }}
-        {% liquid
-          assign page_faqs = blank
 
-          if template.name == 'page' and page
-            assign page_faqs = page.metafields.custom.faqs.value
-          endif
-
-          assign global_faqs = settings.custom.global_faqs.value
-          assign faqs = page_faqs | default: global_faqs
-        %}
-
-        {% if faqs != blank %}
+        {% if page.metafields.custom.faqs.value != blank %}
           <div class="faq-section page-width">
             <h2 class="faq-title">Frequently Asked Questions</h2>
 
