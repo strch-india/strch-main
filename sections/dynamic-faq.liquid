@@ -9,9 +9,8 @@
     assign page_faqs = article.metafields.custom.faqs.value
   endif
 
-  assign section_faqs = section.settings.faqs
   assign global_faqs = settings.custom.global_faqs.value
-  assign faqs = section_faqs | default: page_faqs | default: global_faqs
+  assign faqs = page_faqs | default: global_faqs
 %}
 
 {% if faqs != blank %}
@@ -63,13 +62,6 @@
       "id": "heading",
       "label": "Heading",
       "default": "Frequently Asked Questions"
-    },
-    {
-      "type": "metaobject_list",
-      "id": "faqs",
-      "metaobject_type": "faq",
-      "label": "FAQs from metaobject",
-      "info": "Select FAQs to display. Overrides global FAQs if set. For homepage, select your FAQ metaobject entries here."
     }
   ],
   "presets": [

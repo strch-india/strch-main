@@ -231,20 +231,12 @@
       "settings": {
         "heading": "Shop By Category"
       }
-    },
-    "dynamic_faq_homepage": {
-      "type": "dynamic-faq",
-      "settings": {
-        "heading": "Frequently Asked Questions"
-      },
-      "name": "Dynamic FAQ"
     }
   },
   "order": [
     "slideshow_37dpzw",
     "hero_banner_e7HV76",
     "featured_collection",
-    "shop_category_Kb7XGD",
-    "dynamic_faq_homepage"
+    "shop_category_Kb7XGD"
   ]
 }
