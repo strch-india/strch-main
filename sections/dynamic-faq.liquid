@@ -1,7 +1,7 @@
 {% liquid
   assign page_faqs = blank
 
-  if template.name == 'page' and page
+  if template.name == 'index'
     assign page_faqs = page.metafields.custom.faqs.value
   elsif template contains 'collection'
     assign page_faqs = collection.metafields.custom.faqs.value

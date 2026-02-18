@@ -21,7 +21,10 @@
     "faq": {
       "type": "dynamic-faq",
       "settings": {
-        "heading": "Frequently Asked Questions"
+        "heading": "Frequently Asked Questions",
+        "faqs": [
+          "faqs"
+        ]
       }
     },
     "footer": {
