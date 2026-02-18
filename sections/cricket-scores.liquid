@@ -1,0 +1,74 @@
+{%- style -%}
+{%- endstyle -%}
+
+<section class="scoreboard" style="background-image:url('{{ section.settings.bg_image |  image_url }}')">
+  <div class="board-left">
+    <p>Boundaries</p>
+    <p>100</p>
+  </div>
+  <div class="board-center">
+    {{ section.settings.team_icon | asset_url | image_tag }}
+    <div class="total_count">
+      <p>Sets donated</p>
+    </div>
+  </div>
+  <div class="board-right">
+    <p>Sixes</p>
+    <p>100</p>
+  </div>
+</section>
+
+{%- schema -%}
+{
+  "name": "Boundary Counter",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "image_picker",
+      "id": "team_icon",
+      "label": "Team Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "header",
+      "content": "Boundaries Settings"
+    },
+    {
+      "type": "text",
+      "id": "boundary_title",
+      "label": "Title"
+    },
+    {
+      "type": "number",
+      "id": "boundary_count",
+      "label": "Count"
+    },
+    {
+      "type": "header",
+      "content": "Six'es Settings"
+    },
+    {
+      "type": "text",
+      "id": "sixes_title",
+      "label": "Title"
+    },
+    {
+      "type": "number",
+      "id": "sixes_count",
+      "label": "Count"
+    }
+  ]
+}
+{%- endschema -%}
