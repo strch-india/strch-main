@@ -42,7 +42,10 @@
       "type": "dynamic-faq",
       "name": "Dynamic FAQ (SEO)",
       "settings": {
-        "heading": "Frequently Asked Questions"
+        "heading": "Frequently Asked Questions",
+        "faqs": [
+          "faqs"
+        ]
       }
     }
   },
