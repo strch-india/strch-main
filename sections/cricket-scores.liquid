@@ -110,7 +110,7 @@
       <p class="counter_value">{{ section.settings.boundary_count }}</p>
 
       <p>
-        <span>{{ section.settings.boundary_title }}</span>
+        <span>{{ section.settings.d_boundary_title }}</span>
         <span>{{ section.settings.boundary_count }}</span>
       </p>
     </div>
@@ -129,7 +129,7 @@
       <p class="counter_value">{{ section.settings.sixes_count }}</p>
 
       <p>
-        <span>{{ section.settings.sixes_title }}</span>
+        <span>{{ section.settings.d_sixes_title }}</span>
         <span>{{ section.settings.sixes_count }}</span>
       </p>
     </div>
@@ -179,6 +179,11 @@
       "label": "Count"
     },
     {
+      "type": "text",
+      "id": "d_boundary_title",
+      "label": "Donation Title"
+    },
+    {
       "type": "header",
       "content": "Six'es Settings"
     },
@@ -191,6 +196,11 @@
       "type": "number",
       "id": "sixes_count",
       "label": "Count"
+    },
+    {
+      "type": "text",
+      "id": "d_sixes_title",
+      "label": "Donation Title"
     }
   ],
   "presets": [
