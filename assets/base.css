@@ -710,12 +710,12 @@ summary {
   position: relative;
 }
 
-summary .icon-caret {
+/* summary .icon-caret {
   position: absolute;
   height: 0.6rem;
   right: 1.5rem;
   top: calc(50% - 0.2rem);
-}
+} */
 
 summary::-webkit-details-marker {
   display: none;
