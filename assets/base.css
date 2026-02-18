@@ -4144,7 +4144,7 @@ a.product__text { display: block; text-decoration: none; color: rgba(var(--color
 .faq-question { display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 600; }
 .faq-answer { padding-top: 1rem; }
 .faq-item summary::-webkit-details-marker { display: none; }
-.faq-item[open] .icon-caret { transform: rotate(180deg); }
+/* .faq-item[open] .icon-caret { transform: rotate(180deg); } */
 .icon-caret { transition: transform 0.2s ease; }
 @media (min-width: 768px) {
   .account-dashboard-container{ padding: 0px 50px!important; flex: 0 0 auto; width: 25%; }
