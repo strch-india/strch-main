@@ -11,13 +11,29 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "cricket_scores_bpNnke": {
+      "type": "cricket-scores",
+      "name": "Boundary Counter",
+      "settings": {
+        "title": "STRCH GOODWILL BOUNDARIES",
+        "description": "Every Boundary Scored - A Responsibility Taken.",
+        "team_icon": "shopify://shop_images/flag.jpg",
+        "bg_image": "shopify://shop_images/stadium_jpg.jpg",
+        "boundary_title": "Fours",
+        "boundary_count": 52,
+        "sixes_title": "Sixes",
+        "sixes_count": 27
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "cricket_scores_bpNnke"
   ]
 }
