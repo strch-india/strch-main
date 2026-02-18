@@ -17,10 +17,6 @@
 
           if template.name == 'page' and page
             assign page_faqs = page.metafields.custom.faqs.value
-          elsif template contains 'collection'
-            assign page_faqs = collection.metafields.custom.faqs.value
-          elsif template contains 'article'
-            assign page_faqs = article.metafields.custom.faqs.value
           endif
 
           assign global_faqs = settings.custom.global_faqs.value
