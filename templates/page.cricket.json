@@ -11,13 +11,27 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "cricket_scores_zApkaN": {
+      "type": "cricket-scores",
+      "name": "Boundary Counter",
+      "settings": {
+        "title": "",
+        "team_icon": "shopify://shop_images/flag.jpg",
+        "boundary_title": "Boundaries",
+        "boundary_count": 100,
+        "sixes_title": "Sixes",
+        "sixes_count": 100
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "cricket_scores_zApkaN"
   ]
 }
