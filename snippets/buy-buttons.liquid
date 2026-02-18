@@ -73,7 +73,7 @@
                 const qtyElement = document.querySelector('.fake-qty');
 
                 if (qtyElement) {
-                  qtyElement.textContent = `Hurry! only ${getRandomNumber()} left in stock`;
+                  qtyElement.innerHTML = `Hurry! only <strong>${getRandomNumber()}</strong> left in stock`;
                 }
               });
             </script>

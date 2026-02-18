@@ -372,11 +372,24 @@ form .product-form__buttons {
   grid-template-columns: repeat(2, 1fr);
 }
 
+xb-wishlist-button {
+  max-width: 44rem !important;
+  display: block;
+}
+
+xb-wishlist-button button {
+  border-radius: 0;
+}
+
 .product-form__buttons .fake-qty {
   grid-area: 1 / 1 / 1 / 4;
   text-align: center;
   margin: 0;
   background: #cffa51;
+}
+
+.product-form__buttons .fake-qty strong {
+  color: red;
 }
 
 .product--no-media .product__info-container > modal-opener {
