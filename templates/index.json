@@ -234,10 +234,13 @@
     },
     "dynamic_faq_homepage": {
       "type": "dynamic-faq",
+      "name": "Dynamic FAQ",
       "settings": {
-        "heading": "Frequently Asked Questions"
-      },
-      "name": "Dynamic FAQ"
+        "heading": "Frequently Asked Questions",
+        "faqs": [
+          "faqs"
+        ]
+      }
     }
   },
   "order": [
