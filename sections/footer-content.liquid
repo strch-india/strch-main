@@ -54,7 +54,8 @@
       </div>
     </div>
   </div>
-{%- elsif template contains 'collection' and collection.metafields.custom.footer_content != null -%}
+{%- endif -%}
+{% if template contains 'collection' and collection.metafields.custom.footer_content != null -%}
   <link href="{{ 'footer_content.min.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
   <div id="footer_content--section" class="footer_content-section index-rte" data-section-type="rich-text">
     <div class="collapsableParent">
@@ -126,8 +127,7 @@
       </div>
     </div>
   </div>
-{%- endif -%}
-
+{% endif %}
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const heads = document.querySelectorAll('.collapse_head');
