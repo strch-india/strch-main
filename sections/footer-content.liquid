@@ -73,12 +73,8 @@
         {% liquid
           assign page_faqs = blank
 
-          if template.name == 'index'
-            assign page_faqs = page.metafields.custom.faqs.value
-          elsif template contains 'collection'
+          if template contains 'collection'
             assign page_faqs = collection.metafields.custom.faqs.value
-          elsif template contains 'article'
-            assign page_faqs = article.metafields.custom.faqs.value
           endif
 
           assign global_faqs = settings.custom.global_faqs.value
@@ -87,7 +83,7 @@
 
         {% if faqs != blank %}
         <div class="faq-section page-width">
-          <h2 class="faq-title">{{ section.settings.heading }}</h2>
+          <h2 class="faq-title">Frequently Asked Questions</h2>
 
           <div class="faq-accordion">
             {% for faq in faqs %}
