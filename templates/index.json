@@ -184,12 +184,12 @@
             "label": "Sports Bras"
           }
         },
-        "men_block_fWA8Eg": {
+        "men_block_EbnAR3": {
           "type": "men_block",
           "settings": {
-            "image": "shopify://shop_images/Untitled_design_16__jpg.jpg",
-            "link": "shopify://collections/men-top-wear",
-            "label": "Tees & Tanks"
+            "image": "shopify://shop_images/Untitled_design_15__jpg.jpg",
+            "link": "shopify://collections/men-track-pant",
+            "label": "TRACK PANTS"
           }
         },
         "men_block_bt99pL": {
@@ -200,12 +200,12 @@
             "label": "Shorts"
           }
         },
-        "men_block_EbnAR3": {
+        "men_block_fWA8Eg": {
           "type": "men_block",
           "settings": {
-            "image": "shopify://shop_images/Untitled_design_15__jpg.jpg",
-            "link": "shopify://collections/men-track-pant",
-            "label": "TRACK PANTS"
+            "image": "shopify://shop_images/Untitled_design_16__jpg.jpg",
+            "link": "shopify://collections/men-top-wear",
+            "label": "Tees & Tanks"
           }
         },
         "men_block_HxVmWK": {
@@ -222,9 +222,9 @@
         "women_block_MQaQkc",
         "women_block_LNVm6k",
         "women_block_HtXLgF",
-        "men_block_fWA8Eg",
-        "men_block_bt99pL",
         "men_block_EbnAR3",
+        "men_block_bt99pL",
+        "men_block_fWA8Eg",
         "men_block_HxVmWK"
       ],
       "name": "Shop By Category",
