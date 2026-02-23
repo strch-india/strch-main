@@ -187,7 +187,7 @@
         "men_block_fWA8Eg": {
           "type": "men_block",
           "settings": {
-            "image": "shopify://shop_images/1-Mens_Tees_tanks.jpg",
+            "image": "shopify://shop_images/Untitled_design_16__jpg.jpg",
             "link": "shopify://collections/men-top-wear",
             "label": "Tees & Tanks"
           }
@@ -203,17 +203,17 @@
         "men_block_EbnAR3": {
           "type": "men_block",
           "settings": {
-            "image": "shopify://shop_images/3-Mens_Polo.jpg",
-            "link": "shopify://collections/men-polo-shirt",
-            "label": "Polo Tshirts"
+            "image": "shopify://shop_images/Untitled_design_15__jpg.jpg",
+            "link": "shopify://collections/men-track-pant",
+            "label": "TRACK PANTS"
           }
         },
         "men_block_HxVmWK": {
           "type": "men_block",
           "settings": {
             "image": "shopify://shop_images/4-_Men_Trackpants.jpg",
-            "link": "shopify://collections/men-track-pant",
-            "label": "Track Pants"
+            "link": "shopify://collections/men-joggers",
+            "label": "JOGGERS"
           }
         }
       },
