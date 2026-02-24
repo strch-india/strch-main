@@ -1,5 +1,7 @@
 {% comment %} <span class="field-currency">{{ cart.currency.symbol }}</span> {% endcomment %}
 
+{% assign lowest_price = collection.products | map: 'price' | sort | first %}
+
 <div class="field">
   <label class="field__label" for="{{ id_prefix }}{{ filter.label | escape }}-GTE">
     {{- 'products.facets.from' | t -}}
@@ -8,21 +10,21 @@
     class="field__input"
     name="{{ filter.min_value.param_name }}"
     id="{{ id_prefix }}{{ filter.label | escape }}-GTE"
-    {%- if filter.min_value.value -%}
-      value="{{ filter.min_value.value | money_without_currency }}"
-    {%- endif -%}
+    value="{% if filter.min_value.value %}{{ filter.min_value.value | money_without_currency }}{% else %}{{ lowest_price | money_without_currency }}{% endif %}"
     type="text"
     inputmode="decimal"
-    placeholder="0"
+    placeholder="{{ lowest_price | money_without_currency }}"
     data-pattern="\d| |,|\."
-    data-min="0"
+    data-min="{{ lowest_price | money_without_currency }}"
     data-max="{{ filter.range_max | money_without_currency }}"
   >
 </div>
 
-{% comment %} {%- if filter_type != 'vertical' -%}
-  <span class="field-currency">{{ cart.currency.symbol }}</span>
-{%- endif -%} {% endcomment %}
+{% comment %}
+  {%- if filter_type != 'vertical' -%}
+    <span class="field-currency">{{ cart.currency.symbol }}</span>
+  {%- endif -%}
+{% endcomment %}
 
 <span class="" style="padding:0px 20px;">-</span>
 

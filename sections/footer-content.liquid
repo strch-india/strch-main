@@ -10,12 +10,52 @@
           <path d="M12 14L16 18.6667L20 14" stroke="#333333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </header>
-      <div class="standard__rte collapableTab wrapper--full" data-aos="hero" data-aos-order="2">
+      <div class="standard__rte collapableTab wrapper--full page-width" data-aos="hero" data-aos-order="2">
         {{ section.settings.footer_content }}
+
+        {%- if section.settings.faqs != blank -%}
+          <div class="faq-section">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+
+            <div class="faq-accordion">
+              {%- for faq in section.settings.faqs -%}
+                <details class="faq-item">
+                  <summary class="faq-question">
+                    {{ faq.question }}
+                    <span class="icon-caret"></span>
+                  </summary>
+                  <div class="faq-answer rte">
+                    {{ faq.answer | metafield_tag }}
+                  </div>
+                </details>
+              {%- endfor -%}
+            </div>
+          </div>
+
+          <script type="application/ld+json">
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {%- for faq in section.settings.faqs -%}
+              {
+                "@type": "Question",
+                "name": {{ faq.question | json }},
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": {{ faq.answer | metafield_text | json }}
+                }
+              }{%- unless forloop.last -%},{%- endunless -%}
+              {%- endfor -%}
+            ]
+          }
+          </script>
+        {%- endif -%}
       </div>
     </div>
   </div>
-{%- elsif template contains 'collection' and collection.metafields.custom.footer_content != null -%}
+{%- endif -%}
+{% if template contains 'collection' and collection.metafields.custom.footer_content != null -%}
   <link href="{{ 'footer_content.min.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
   <div id="footer_content--section" class="footer_content-section index-rte" data-section-type="rich-text">
     <div class="collapsableParent">
@@ -27,13 +67,63 @@
           <path d="M12 14L16 18.6667L20 14" stroke="#333333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </header>
-      <div class="standard__rte collapableTab wrapper--full" data-aos="hero" data-aos-order="2">
+      <div class="standard__rte collapableTab wrapper--full page-width" data-aos="hero" data-aos-order="2">
         {{ collection.metafields.custom.footer_content | metafield_tag }}
+
+        {% liquid
+          assign page_faqs = blank
+
+          if template contains 'collection'
+            assign page_faqs = collection.metafields.custom.faqs.value
+          endif
+
+          assign global_faqs = settings.custom.global_faqs.value
+          assign faqs = page_faqs | default: global_faqs
+        %}
+
+        {% if faqs != blank %}
+        <div class="faq-section">
+          <h2 class="faq-title">Frequently Asked Questions</h2>
+
+          <div class="faq-accordion">
+            {% for faq in faqs %}
+              <details class="faq-item">
+                <summary class="faq-question">
+                  {{ faq.question }}
+                  <span class="icon-caret"></span>
+                </summary>
+                <div class="faq-answer rte">
+                  {{ faq.answer | metafield_tag }}
+                </div>
+              </details>
+            {% endfor %}
+          </div>
+        </div>
+
+        {%- comment -%} SEO FAQ Schema {%- endcomment -%}
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {% for faq in faqs %}
+            {
+              "@type": "Question",
+              "name": {{ faq.question | json }},
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": {{ faq.answer | metafield_text | json }}
+              }
+            }{% unless forloop.last %},{% endunless %}
+            {% endfor %}
+          ]
+        }
+        </script>
+        {% endif %}
       </div>
     </div>
   </div>
-{%- endif -%}
-
+{% endif %}
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const heads = document.querySelectorAll('.collapse_head');
@@ -59,6 +149,13 @@
       "type": "richtext",
       "id": "footer_content",
       "label": "Homepage Footer Content"
+    },
+    {
+      "type": "metaobject_list",
+      "id": "faqs",
+      "metaobject_type": "faq",
+      "label": "FAQs from metaobject",
+      "info": "Select FAQs to display. Overrides global FAQs if set. For homepage, select your FAQ metaobject entries here."
     }
   ],
   "presets": [

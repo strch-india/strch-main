@@ -17,21 +17,25 @@
         "padding_bottom": 28
       }
     },
-    "cricket_scores_zApkaN": {
+    "cricket_scores_bpNnke": {
       "type": "cricket-scores",
       "name": "Boundary Counter",
       "settings": {
-        "title": "",
+        "title": "STRCH GOODWILL BOUNDARIES",
+        "description": "Every Boundary Scored - A Responsibility Taken.",
         "team_icon": "shopify://shop_images/flag.jpg",
-        "boundary_title": "Boundaries",
-        "boundary_count": 100,
+        "bg_image": "shopify://shop_images/stadium_jpg.jpg",
+        "boundary_title": "Fours",
+        "boundary_count": 68,
+        "d_boundary_title": "STRCH Garments to be donated:",
         "sixes_title": "Sixes",
-        "sixes_count": 100
+        "sixes_count": 46,
+        "d_sixes_title": "STRCH Sets to be donated:"
       }
     }
   },
   "order": [
     "main",
-    "cricket_scores_zApkaN"
+    "cricket_scores_bpNnke"
   ]
 }

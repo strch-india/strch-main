@@ -1,1 +1,126 @@
-{"name":"t:sections.header.name","type":"header","sections":{"header":{"type":"header","blocks":{"submenu_images_N8tbCH":{"type":"submenu_images","disabled":true,"settings":{"menu_item_name":"Men","image_1":"shopify:\/\/shop_images\/Men_s_shorts.jpg","image_1_link":"shopify:\/\/collections\/mens-comfort-shorts","image_1_text":"Shorts","image_2":"shopify:\/\/shop_images\/Men_s_T_shirt.jpg","image_2_link":"shopify:\/\/collections\/mens-t-shirt","image_2_text":"T-shirts","image_3":"shopify:\/\/shop_images\/Men_s_Track_pant.jpg","image_3_link":"shopify:\/\/collections\/men-track-pant","image_3_text":"Track Pants","image_4_link":"","image_4_text":"","image_5_link":"","image_5_text":"","image_6_link":"","image_6_text":""}},"submenu_images_4NbWGn":{"type":"submenu_images","disabled":true,"settings":{"menu_item_name":"Women","image_1":"shopify:\/\/shop_images\/Sports_bra.jpg","image_1_link":"shopify:\/\/collections\/sportsbra","image_1_text":"Sports Bras","image_2":"shopify:\/\/shop_images\/Women_Leggings.jpg","image_2_link":"shopify:\/\/collections\/women-leggings","image_2_text":"Leggings","image_3":"shopify:\/\/shop_images\/Women_Shorts.jpg","image_3_link":"shopify:\/\/collections\/womens-shorts-and-skorts","image_3_text":"Shorts","image_4_link":"","image_4_text":"","image_5_link":"","image_5_text":"","image_6_link":"","image_6_text":""}}},"block_order":["submenu_images_N8tbCH","submenu_images_4NbWGn"],"settings":{"logo_position":"middle-center","mobile_logo_position":"center","menu":"main-menu","menu_type_desktop":"drawer","sticky_header_type":"on-scroll-up","show_line_separator":true,"color_scheme":"scheme-1","menu_color_scheme":"scheme-1","enable_country_selector":true,"enable_language_selector":true,"enable_customer_avatar":true,"margin_bottom":0,"padding_top":10,"padding_bottom":10}}},"order":["header"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "ticker_8BnxDc": {
+      "type": "ticker",
+      "blocks": {
+        "text_rjFpa4": {
+          "type": "text",
+          "settings": {
+            "ticker_text": "STRCH Goodwill Boundaries. Every Boundary Scored - A Responsibility Taken.",
+            "ticker_link": "shopify://pages/strch-goodwill-boundaries"
+          }
+        },
+        "text_LXCbV3": {
+          "type": "text",
+          "settings": {
+            "ticker_text": "STRCH Goodwill Boundaries. Every Boundary Scored - A Responsibility Taken.",
+            "ticker_link": "shopify://pages/strch-goodwill-boundaries"
+          }
+        },
+        "text_decWYr": {
+          "type": "text",
+          "settings": {
+            "ticker_text": "STRCH Goodwill Boundaries. Every Boundary Scored - A Responsibility Taken.",
+            "ticker_link": "shopify://pages/strch-goodwill-boundaries"
+          }
+        }
+      },
+      "block_order": [
+        "text_rjFpa4",
+        "text_LXCbV3",
+        "text_decWYr"
+      ],
+      "name": "Scrolling Ticker",
+      "settings": {
+        "speed": 40,
+        "bg_color": "#cffa51",
+        "text_color": "#121212",
+        "font_size": 16
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "submenu_images_N8tbCH": {
+          "type": "submenu_images",
+          "disabled": true,
+          "settings": {
+            "menu_item_name": "Men",
+            "image_1": "shopify://shop_images/Men_s_shorts.jpg",
+            "image_1_link": "shopify://collections/mens-comfort-shorts",
+            "image_1_text": "Shorts",
+            "image_2": "shopify://shop_images/Men_s_T_shirt.jpg",
+            "image_2_link": "shopify://collections/mens-t-shirt",
+            "image_2_text": "T-shirts",
+            "image_3": "shopify://shop_images/Men_s_Track_pant.jpg",
+            "image_3_link": "shopify://collections/men-track-pant",
+            "image_3_text": "Track Pants",
+            "image_4_link": "",
+            "image_4_text": "",
+            "image_5_link": "",
+            "image_5_text": "",
+            "image_6_link": "",
+            "image_6_text": ""
+          }
+        },
+        "submenu_images_4NbWGn": {
+          "type": "submenu_images",
+          "disabled": true,
+          "settings": {
+            "menu_item_name": "Women",
+            "image_1": "shopify://shop_images/Sports_bra.jpg",
+            "image_1_link": "shopify://collections/sportsbra",
+            "image_1_text": "Sports Bras",
+            "image_2": "shopify://shop_images/Women_Leggings.jpg",
+            "image_2_link": "shopify://collections/women-leggings",
+            "image_2_text": "Leggings",
+            "image_3": "shopify://shop_images/Women_Shorts.jpg",
+            "image_3_link": "shopify://collections/womens-shorts-and-skorts",
+            "image_3_text": "Shorts",
+            "image_4_link": "",
+            "image_4_text": "",
+            "image_5_link": "",
+            "image_5_text": "",
+            "image_6_link": "",
+            "image_6_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "submenu_images_N8tbCH",
+        "submenu_images_4NbWGn"
+      ],
+      "settings": {
+        "logo_position": "middle-center",
+        "mobile_logo_position": "center",
+        "menu": "main-menu",
+        "menu_type_desktop": "drawer",
+        "sticky_header_type": "on-scroll-up",
+        "show_line_separator": true,
+        "color_scheme": "scheme-1",
+        "menu_color_scheme": "scheme-1",
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "enable_customer_avatar": true,
+        "margin_bottom": 0,
+        "padding_top": 10,
+        "padding_bottom": 10
+      }
+    }
+  },
+  "order": [
+    "ticker_8BnxDc",
+    "header"
+  ]
+}

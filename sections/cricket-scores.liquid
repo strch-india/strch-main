@@ -1,11 +1,98 @@
 {%- style -%}
-  #scoreboard-{{ section.id }}{
-    background-image:url('{{ section.settings.bg_image |  image_url }}');
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    place-items: center;
+  .scoreboard {
     width: 100%;
     height: 100vh;
+    background-image: url('{{ section.settings.bg_image |  image_url }}');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+  }
+
+  .scoreboard::after {
+    content: '';
+    background: rgba(0, 0, 0, 0.6);
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .team-india-icon {
+    width: 100px;
+  }
+
+  .mainboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto 1fr;
+    place-items: center;
+    row-gap: 24px;
+    background-color: #cffa51;
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 24px;
+    min-width: 540px;
+    text-transform: uppercase;
+  }
+
+  .main-bottom {
+    grid-area: 1 / 1 / 1 / 4;
+  }
+
+  .mainboard div p {
+    margin: 0;
+    color: #000;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  .counter_name {
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  .counter_value {
+    font-size: 40px;
+    font-weight: 600;
+  }
+
+  .scoreboard_title {
+    margin: 0;
+    color: #000;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .scoreboard_description {
+    margin-bottom: 16px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .mainboard {
+      min-width: 95%;
+      row-gap: 16px;
+      grid-template-columns: 1fr 72px 1fr;
+      padding: 16px;
+    }
+
+    .team-india-icon {
+      width: 64px;
+    }
+
+    .mainboard div p {
+      line-height: 1.2;
+    }
+
+    .mainboard div p.counter_value {
+      margin-bottom: 8px;
+    }
   }
 {%- endstyle -%}
 
@@ -13,19 +100,39 @@
   class="scoreboard"
   id="scoreboard={{ section.id }}"
 >
-  <div class="board-left">
-    <p>{{ section.settings.boundary_title }}</p>
-    <p>{{ section.settings.boundary_count }}</p>
-  </div>
-  <div class="board-center">
-    <img src="{{ section.settings.team_icon | image_url }}" width="auto" height="auto" alt="team-india-icon">
-    <div class="total_count">
-      <p>Sets donated</p>
+  <div class="mainboard">
+    <div class="main-bottom">
+      <h1 class="scoreboard_title">{{ section.settings.title }}</h1>
+      <p class="scoreboard_description">{{ section.settings.description }}</p>
     </div>
-  </div>
-  <div class="board-right">
-    <p>{{ section.settings.sixes_title }}</p>
-    <p>{{ section.settings.sixes_count }}</p>
+    <div class="board-left">
+      <p class="counter_name">{{ section.settings.boundary_title }}</p>
+      <p class="counter_value">{{ section.settings.boundary_count }}</p>
+
+      <p>
+        <span>{{ section.settings.d_boundary_title }}</span>
+        <span>{{ section.settings.boundary_count }}</span>
+      </p>
+    </div>
+    <div class="board-center">
+      <img
+        src="{{ section.settings.team_icon | image_url }}"
+        width="auto"
+        height="auto"
+        class="team-india-icon"
+        alt="team-india-icon"
+      >
+      <div class="total_count"></div>
+    </div>
+    <div class="board-right">
+      <p class="counter_name">{{ section.settings.sixes_title }}</p>
+      <p class="counter_value">{{ section.settings.sixes_count }}</p>
+
+      <p>
+        <span>{{ section.settings.d_sixes_title }}</span>
+        <span>{{ section.settings.sixes_count }}</span>
+      </p>
+    </div>
   </div>
 </section>
 
@@ -41,6 +148,11 @@
       "type": "text",
       "id": "title",
       "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
     },
     {
       "type": "image_picker",
@@ -67,6 +179,11 @@
       "label": "Count"
     },
     {
+      "type": "text",
+      "id": "d_boundary_title",
+      "label": "Donation Title"
+    },
+    {
       "type": "header",
       "content": "Six'es Settings"
     },
@@ -79,6 +196,11 @@
       "type": "number",
       "id": "sixes_count",
       "label": "Count"
+    },
+    {
+      "type": "text",
+      "id": "d_sixes_title",
+      "label": "Donation Title"
     }
   ],
   "presets": [

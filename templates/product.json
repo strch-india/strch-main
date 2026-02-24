@@ -80,7 +80,7 @@
         "media_position": "left",
         "image_zoom": "lightbox",
         "hide_variants": true,
-        "enable_video_looping": false,
+        "enable_video_looping": true,
         "padding_top": 0,
         "padding_bottom": 0
       }

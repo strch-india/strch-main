@@ -61,6 +61,23 @@
         {%- endif -%}
 
         <div class="product-form__buttons">
+          {%- if product.tags contains 'DC Exclusive' -%}
+            <p class="fake-qty"></p>
+
+            <script>
+              document.addEventListener('DOMContentLoaded', function () {
+                function getRandomNumber() {
+                  return Math.floor(Math.random() * (50 - 20 + 1)) + 20;
+                }
+
+                const qtyElement = document.querySelector('.fake-qty');
+
+                if (qtyElement) {
+                  qtyElement.innerHTML = `Hurry! only <strong>${getRandomNumber()}</strong> left in stock`;
+                }
+              });
+            </script>
+          {%- endif -%}
           {%- liquid
             assign check_against_inventory = true
             if product.selected_or_first_available_variant.inventory_management != 'shopify' or product.selected_or_first_available_variant.inventory_policy == 'continue'
