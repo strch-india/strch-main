@@ -94,8 +94,7 @@
         "media_block_mT4n8N": {
           "type": "media_block",
           "settings": {
-            "image": "shopify://shop_images/left.jpg",
-            "video": "shopify://files/videos/720x1080.mp4",
+            "video": "shopify://files/videos/720x1080(holi sale).mp4",
             "heading": "",
             "subheading": "",
             "button_text": "SHOP ALL",
@@ -105,7 +104,7 @@
         "media_block_zeCBhf": {
           "type": "media_block",
           "settings": {
-            "image": "shopify://shop_images/1_jpg.jpg",
+            "image": "shopify://shop_images/holi_banner_jpg.jpg",
             "heading": "",
             "subheading": "",
             "button_text": "EXPLORE ACTIVEWEAR",
