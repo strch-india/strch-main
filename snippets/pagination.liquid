@@ -1,18 +1,5 @@
 {% comment %}
-  Renders a set of links for paginated results. Must be used within paginate tags.
-
-  Usage:
-  {% paginate results by 2 %}
-    {% render 'pagination', paginate: paginate, anchor: '#yourID', pagination: 'default' %}
-  {% endpaginate %}
-
-  Accepts:
-  - paginate: {Object}
-  - anchor: {String} (optional) This can be added so that on page reload it takes you to wherever you've placed your anchor tag.
-  - pagination: {String} (optional) Pagination type: 'default', 'load_more', or 'infinit_scrolling'
-  - section_id: {String} (optional) Section ID for AJAX loading
-  - products_per_page: {Number} (optional) Number of products per page for progress calculation
-  - collection: {Object} (optional) Collection object for product count
+  Pagination Snippet - Fixed for AJAX / Lazy Loading
 {% endcomment %}
 
 {{ 'component-pagination.css' | asset_url | stylesheet_tag }}
@@ -20,39 +7,23 @@
 {%- liquid
   assign pagination_type = pagination | default: 'default'
   assign section_id_param = section_id | default: ''
-  
-  # Get query string parameters to preserve
-  assign pagination_ps = ''
-  if request.url contains 'pagination='
-    assign url_parts = request.url | split: '?'
-    if url_parts.size > 1
-      assign query_string = url_parts[1]
-      if query_string contains 'pagination='
-        assign pagination_param = query_string | split: 'pagination=' | last | split: '&' | first
-        if pagination_param == 'default' or pagination_param == 'load_more' or pagination_param == 'infinit_scrolling'
-          assign pagination_ps = pagination_ps | append: '&pagination=' | append: pagination_param
-        endif
-      endif
-    endif
-  endif
-  
-  assign t = template | split: '.' | first
 -%}
 
 {%- if paginate.parts.size > 0 -%}
-  {%- if pagination_type == 'default' or pagination_type == blank -%}
+  {%- if pagination_type == 'default' -%}
+    <!-- ================= DEFAULT PAGINATION ================= -->
     <div class="pagination-wrapper" data-page="{{ paginate.current_page }}">
       <nav class="pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
         <ul class="pagination__list list-unstyled" role="list">
           {%- if paginate.previous -%}
             <li>
               <a
-                href="{{ paginate.previous.url }}{{ anchor }}"
+                href="{{ paginate.previous.url }}"
                 class="pagination__item pagination__item--next pagination__item-arrow link motion-reduce"
                 aria-label="{{ 'general.pagination.previous' | t }}"
               >
                 <span class="svg-wrapper">
-                  {{- 'icon-caret.svg' | inline_asset_content -}}
+                  {{ 'icon-caret.svg' | inline_asset_content }}
                 </span>
               </a>
             </li>
@@ -62,23 +33,20 @@
             <li>
               {%- if part.is_link -%}
                 <a
-                  href="{{ part.url }}{{ anchor }}"
+                  href="{{ part.url }}"
                   class="pagination__item link"
                   aria-label="{{ 'general.pagination.page' | t: number: part.title }}"
                 >
-                  {{- part.title -}}
+                  {{ part.title }}
                 </a>
               {%- else -%}
                 {%- if part.title == paginate.current_page -%}
-                  <a
-                    role="link"
-                    aria-disabled="true"
+                  <span
                     class="pagination__item pagination__item--current light"
                     aria-current="page"
-                    aria-label="{{ 'general.pagination.page' | t: number: part.title }}"
                   >
-                    {{- part.title -}}
-                  </a>
+                    {{ part.title }}
+                  </span>
                 {%- else -%}
                   <span class="pagination__item">{{ part.title }}</span>
                 {%- endif -%}
@@ -89,12 +57,12 @@
           {%- if paginate.next -%}
             <li>
               <a
-                href="{{ paginate.next.url }}{{ anchor }}"
+                href="{{ paginate.next.url }}"
                 class="pagination__item pagination__item--prev pagination__item-arrow link motion-reduce"
                 aria-label="{{ 'general.pagination.next' | t }}"
               >
                 <span class="svg-wrapper">
-                  {{- 'icon-caret.svg' | inline_asset_content -}}
+                  {{ 'icon-caret.svg' | inline_asset_content }}
                 </span>
               </a>
             </li>
@@ -102,23 +70,25 @@
         </ul>
       </nav>
     </div>
+
   {%- else -%}
-    <div class="pagination-load-more">
+    <!-- ================= LOAD MORE / INFINITE ================= -->
+    <div class="pagination-load-more" data-page="{{ paginate.current_page }}">
       <div class="pagination">
         {%- if paginate.next -%}
-          <a
-            href="{{ paginate.next.url }}{{ pagination_ps }}{% if section_id_param != blank %}&section_id={{ section_id_param }}{% endif %}"
-            class="collections-load-more button{% if pagination_type == 'infinit_scrolling' %} infinit-scrolling{% endif %}"
+          <div
+            class="pagination-load-more auto-load"
+            data-next-url="{{ paginate.next.url }}"
+            {% if section_id != blank %}
+              data-section-id="{{ section_id }}"
+            {% endif %}
           >
-            <span class="hidden-loading">Load more</span>
-            <span class="loader-icon">
-              <div class="loading__spinner">
-                <svg aria-hidden="true" focusable="false" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                  <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-                </svg>
-              </div>
-            </span>
-          </a>
+            <div class="auto-load-spinner">
+              <svg class="spinner" viewBox="0 0 66 66">
+                <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+              </svg>
+            </div>
+          </div>
         {%- endif -%}
       </div>
     </div>

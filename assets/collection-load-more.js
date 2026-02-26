@@ -1,206 +1,104 @@
-/**
- * Collection Load More
- * Handles load more and infinite scroll functionality for product listings
- */
-(function() {
-  'use strict';
+(function () {
 
-  const options = {
-    loadMoreButton: '.collections-load-more',
-    productGrid: '#product-grid',
-    productGridContainer: '#ProductGridContainer'
-  };
+  const GRID_SELECTOR = '#product-grid';
+  const LOADER_SELECTOR = '.pagination-load-more.auto-load';
 
-  const CollectionLoadMore = {
-    init: function() {
-      this.eventLoadMore();
-    },
+  let observer = null;
+  let isLoading = false;
 
-    eventLoadMore: function() {
-      document.querySelectorAll(options.loadMoreButton).forEach(loadMore => {
-        const _this = this;
-        
-        // Check if infinite scrolling is enabled
-        if (loadMore.classList.contains('infinit-scrolling')) {
-          // Use IntersectionObserver for infinite scroll
-          const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-              if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
-                _this.loadMoreProducts(loadMore);
-              }
-            });
-          }, {
-            threshold: 0.5,
-            rootMargin: '200px'
-          });
-          
-          observer.observe(loadMore);
-        } else {
-          // Click handler for load more button
-          loadMore.addEventListener("click", function(event) {
-            event.preventDefault();
-            const target = event.currentTarget;
-            _this.loadMoreProducts(target);
-          }, false);
+  function initAutoLoad() {
+
+    const loader = document.querySelector(LOADER_SELECTOR);
+    if (!loader) return;
+
+    if (observer) observer.disconnect();
+
+    observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !isLoading) {
+          loadNext(loader);
         }
       });
-    },
-
-    loadMoreProducts: function(target) {
-      // Prevent multiple simultaneous loads
-      if (target.classList.contains('loading')) {
-        return;
-      }
-
-      const loadMoreUrl = target.getAttribute('href');
-      if (!loadMoreUrl) {
-        return;
-      }
-
-      this.toggleLoading(target, true);
-
-      fetch(loadMoreUrl)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          return response.text();
-        })
-        .then(responseText => {
-          const parser = new DOMParser();
-          const productNodes = parser.parseFromString(responseText, 'text/html');
-          
-          // Find the product grid in the response
-          let productGrid = null;
-          if (productNodes.querySelector(options.productGridContainer)) {
-            productGrid = productNodes.querySelector(options.productGridContainer);
-          } else if (productNodes.querySelector(options.productGrid)) {
-            productGrid = productNodes.querySelector(options.productGrid);
-          } else {
-            // Try to find product grid by class
-            productGrid = productNodes.querySelector('.product-grid') || productNodes.querySelector('#product-grid');
-          }
-
-          if (!productGrid) {
-            throw new Error('Product grid not found in response');
-          }
-
-          // Get new product items
-          const newItems = productGrid.querySelectorAll('.grid__item, li.grid__item');
-          
-          // Find the current product grid
-          const currentGrid = document.querySelector(options.productGrid) || 
-                            document.querySelector('.product-grid') ||
-                            document.querySelector('#product-grid');
-          
-          if (!currentGrid) {
-            throw new Error('Current product grid not found');
-          }
-
-          // Append new items
-          newItems.forEach(item => {
-            // Clone and append to avoid issues
-            const clonedItem = item.cloneNode(true);
-            currentGrid.appendChild(clonedItem);
-          });
-
-          // Update or remove load more button
-          const newLoadMore = productNodes.querySelector('.collections-load-more');
-          if (newLoadMore) {
-            target.setAttribute("href", newLoadMore.getAttribute('href'));
-            // Re-observe if infinite scrolling
-            if (target.classList.contains('infinit-scrolling')) {
-              // Reinitialize observer
-              this.eventLoadMore();
-            }
-          } else {
-            target.remove();
-          }
-
-          this.toggleLoading(target, false);
-
-          // Reinitialize lazy loading if available
-          if (typeof BlsLazyloadImg !== 'undefined' && typeof BlsLazyloadImg.init === 'function') {
-            BlsLazyloadImg.init();
-          }
-
-          // Reinitialize scroll animations if available
-          if (typeof initializeScrollAnimationTrigger === 'function') {
-            initializeScrollAnimationTrigger();
-          }
-
-          // Reinitialize color swatches if available
-          if (typeof initAllCards === 'function') {
-            initAllCards();
-          }
-
-          // Dispatch custom event
-          document.dispatchEvent(new CustomEvent('collection:load-more:loaded', {
-            detail: { items: newItems.length }
-          }));
-        })
-        .catch((error) => {
-          console.error('Error loading more products:', error);
-          this.toggleLoading(target, false);
-          this.showError('Failed to load more products. Please try again.');
-        });
-    },
-
-    toggleLoading: function(button, loading) {
-      if (button) {
-        if (loading) {
-          button.classList.add('loading');
-          button.setAttribute('aria-busy', 'true');
-        } else {
-          button.classList.remove('loading');
-          button.removeAttribute('aria-busy');
-        }
-      }
-    },
-
-    showError: function(message) {
-      // Create or update error message
-      let errorElement = document.querySelector('.load-more-error');
-      if (!errorElement) {
-        errorElement = document.createElement('div');
-        errorElement.className = 'load-more-error';
-        errorElement.style.cssText = 'text-align: center; padding: 2rem; color: rgb(var(--color-foreground)); background-color: rgba(var(--color-foreground), 0.05); border-radius: 0.4rem; margin: 2rem 0;';
-        const loadMoreContainer = document.querySelector('.pagination-load-more');
-        if (loadMoreContainer) {
-          loadMoreContainer.appendChild(errorElement);
-        }
-      }
-      errorElement.textContent = message;
-      
-      // Remove error after 5 seconds
-      setTimeout(() => {
-        if (errorElement && errorElement.parentNode) {
-          errorElement.remove();
-        }
-      }, 5000);
-    }
-  };
-
-  // Initialize on page load
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
-      CollectionLoadMore.init();
+    }, {
+      rootMargin: '500px'
     });
-  } else {
-    CollectionLoadMore.init();
+
+    observer.observe(loader);
   }
 
-  // Re-initialize on Shopify section load/reload (for theme editor)
-  document.addEventListener('shopify:section:load', function(event) {
-    setTimeout(function() {
-      CollectionLoadMore.init();
-    }, 100);
-  });
+  function loadNext(loader) {
 
-  // Re-initialize when filters are applied
-  document.addEventListener('facet:rendered', function() {
-    setTimeout(function() {
-      CollectionLoadMore.init();
-    }, 100);
-  });
+    const nextUrl = loader.dataset.nextUrl;
+    if (!nextUrl) return;
+
+    isLoading = true;
+
+    let fetchUrl = nextUrl;
+
+    if (loader.dataset.sectionId) {
+      fetchUrl += fetchUrl.includes('?')
+        ? '&section_id=' + loader.dataset.sectionId
+        : '?section_id=' + loader.dataset.sectionId;
+    }
+
+    fetch(fetchUrl)
+      .then(res => res.text())
+      .then(html => {
+
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+
+        const newGrid = doc.querySelector(GRID_SELECTOR);
+        const currentGrid = document.querySelector(GRID_SELECTOR);
+
+        if (!newGrid || !currentGrid) return;
+
+        // Append new items
+        newGrid.querySelectorAll('li.grid__item')
+          .forEach(item => {
+            currentGrid.appendChild(item.cloneNode(true));
+          });
+
+        // Find next loader in response
+        const newLoader = doc.querySelector(LOADER_SELECTOR);
+
+        if (newLoader && newLoader.dataset.nextUrl) {
+          loader.dataset.nextUrl = newLoader.dataset.nextUrl;
+          isLoading = false;
+        } else {
+          observer.disconnect();
+          loader.remove();
+        }
+
+        reInitTheme();
+
+      })
+      .catch(err => {
+        console.error('Auto Load Error:', err);
+        isLoading = false;
+      });
+  }
+
+  function reInitTheme() {
+    if (typeof BlsLazyloadImg !== 'undefined' && BlsLazyloadImg.init) {
+      BlsLazyloadImg.init();
+    }
+
+    if (typeof initializeScrollAnimationTrigger === 'function') {
+      initializeScrollAnimationTrigger();
+    }
+
+    if (typeof initAllCards === 'function') {
+      initAllCards();
+    }
+  }
+
+  function init() {
+    setTimeout(initAutoLoad, 200);
+  }
+
+  document.addEventListener('DOMContentLoaded', init);
+  document.addEventListener('shopify:section:load', init);
+  document.addEventListener('facet:rendered', init);
+
 })();
