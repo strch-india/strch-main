@@ -25,18 +25,18 @@
   const response = await getCountry.json();
   const res = response?.detected_values?.country_name;
   const styleElement = document.createElement("style");
-  let css1 = "";
+  let css = "";
   switch(res){
     case "India":
       //Enter Selector to disable Shopify and Third Part Button
-      css1 = ".shopifycheckoutbtn{display:none !important;}";
+      css = ".shopifycheckoutbtn{display:none !important;}";
       break;
     default:
       //Enter Gokwik Selector | Dont change it if it is same.
-      css1 = ".gokwik-checkout{ display : none !important;} #gokwik-buy-now{ display : none !important;} .shopifycheckoutbtn{display:block !important;}";
+      css = ".gokwik-checkout{ display : none !important;} #gokwik-buy-now{ display : none !important;} .shopifycheckoutbtn{display:block !important;}";
       break;
   }
-  styleElement.textContent = css1;
+  styleElement.textContent = css;
   document.head.appendChild(styleElement);
 }
 document.addEventListener("DOMContentLoaded", getCountryData);
@@ -147,12 +147,12 @@ gokwikCheckoutButtons.forEach(function(button) {
         });
     }
 
-let css = ""
+let css1 = ""
 function Decidefun(valuetodecide) {
     let targetElement  = null;
     if (valuetodecide == "shopify") {
                console.log("No Gokwik ----->")
-      css = `
+      css1 = `
       .gokwik-checkout{display:none!important;}
       #gokwik-buy-now{display:none!important;}
       `
@@ -160,14 +160,14 @@ function Decidefun(valuetodecide) {
       if(targetElement){targetElement.remove()}
       } else {
          console.log("Show Gokwik ----->")
-       css = `
+       css1 = `
        .shopifycheckoutbtn{display:none !important;}
        `
     }
    const styleElement = document.createElement("style");
    styleElement.textContent = css1;
    document.head.appendChild(styleElement);
-console.log("Show Gokwik ----->css1 applied")
+console.log("Show Gokwik ----->Css applied")
 }
 
 document.addEventListener('DOMContentLoaded',senddata);
@@ -332,7 +332,7 @@ document.addEventListener('DOMContentLoaded',senddata);
     z-index:99;
   }
   {% endif %}
-  /* Loader css1 */
+  /* Loader CSS */
     #btn-loader{
       display: none;
       position: absolute;
