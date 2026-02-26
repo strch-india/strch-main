@@ -25,18 +25,18 @@
   const response = await getCountry.json();
   const res = response?.detected_values?.country_name;
   const styleElement = document.createElement("style");
-  let css = "";
+  let css1 = "";
   switch(res){
     case "India":
       //Enter Selector to disable Shopify and Third Part Button
-      css = ".shopifycheckoutbtn{display:none !important;}";
+      css1 = ".shopifycheckoutbtn{display:none !important;}";
       break;
     default:
       //Enter Gokwik Selector | Dont change it if it is same.
-      css = ".gokwik-checkout{ display : none !important;} #gokwik-buy-now{ display : none !important;} .shopifycheckoutbtn{display:block !important;}";
+      css1 = ".gokwik-checkout{ display : none !important;} #gokwik-buy-now{ display : none !important;} .shopifycheckoutbtn{display:block !important;}";
       break;
   }
-  styleElement.textContent = css;
+  styleElement.textContent = css1;
   document.head.appendChild(styleElement);
 }
 document.addEventListener("DOMContentLoaded", getCountryData);
@@ -165,9 +165,9 @@ function Decidefun(valuetodecide) {
        `
     }
    const styleElement = document.createElement("style");
-   styleElement.textContent = css;
+   styleElement.textContent = css1;
    document.head.appendChild(styleElement);
-console.log("Show Gokwik ----->Css applied")
+console.log("Show Gokwik ----->css1 applied")
 }
 
 document.addEventListener('DOMContentLoaded',senddata);
@@ -332,7 +332,7 @@ document.addEventListener('DOMContentLoaded',senddata);
     z-index:99;
   }
   {% endif %}
-  /* Loader CSS */
+  /* Loader css1 */
     #btn-loader{
       display: none;
       position: absolute;
