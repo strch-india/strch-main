@@ -155,14 +155,14 @@ function Decidefun(valuetodecide) {
       css = `
       .gokwik-checkout{display:none;}
       #gokwik-buy-now{display:none;}
-.shopifycheckoutbutton{display:flex;}
+#shopifycheckoutbutton{display:flex;}
       `
       targetElement = document.querySelector("#gokwik-buy-now")
       if(targetElement){targetElement.remove()}
       } else {
          console.log("Show Gokwik ----->")
        css = `
-       .shopifycheckoutbutton{display:none;}
+       #shopifycheckoutbutton{display:none;}
         #CartDrawer-Checkout{display:none;}
         #checkout{display:none;}
        `

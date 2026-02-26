@@ -111,7 +111,7 @@
             {%- render 'loading-spinner' -%}
           </button>
           {%- if show_dynamic_checkout -%}
-            <div class="shopifycheckoutbutton" style="display:none;">
+            <div id="shopifycheckoutbutton" style="display:none;">
             {{ form | payment_button }}
             </div>
              <div class="shopify-payment-button">
