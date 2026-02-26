@@ -3947,7 +3947,7 @@ details-disclosure > details {
 .logo-animation header{ padding-top: 0px; padding-bottom: 0px; }
 .logo-animated header{ padding-top: 10px; padding-bottom: 10px; }
 /* .section-header.logo-animation{ position: fixed!important; } */
-.section-header{ margin-bottom: 0px; transition: all ease-in-out .3s; z-index: 2!important; width: 100%; background: transparent; }
+.section-header{ margin-bottom: 0px; transition: all ease-in-out .3s; z-index: 5!important; width: 100%; background: transparent; }
 .section-header sticky-header{ background: none; border: none; }
 .section-header.shopify-section-header-sticky{ background: #fff; }
 .collection-men .section-header.shopify-section-header-sticky, .collection-women .section-header.shopify-section-header-sticky{ background: none; }
