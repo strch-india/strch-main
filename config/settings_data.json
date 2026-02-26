@@ -132,6 +132,8 @@
     "cart_color_scheme": "scheme-1",
     "mid": "196g4q0esqr6",
     "envType": "production",
+    "hideFlow": false,
+    "ga4Gokwik": "G-D0PJG6BTKY",
     "fbpixel": "1065021938842694",
     "goEnable": true,
     "goBuynowEnable": true,
