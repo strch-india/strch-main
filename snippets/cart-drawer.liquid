@@ -523,7 +523,7 @@
             </a>
           </div>
           <div class="cart__ctas" {{ block.shopify_attributes }}>
-            <button type="submit" id="CartDrawer-Checkout" class="cart__checkout-button button shopifynative" name="checkout" form="CartDrawer-Form" {% if cart == empty %} disabled{% endif %}>
+            <button type="submit" id="CartDrawer-Checkout" class="cart__checkout-button button shopifycheckoutbtn" name="checkout" form="CartDrawer-Form" {% if cart == empty %} disabled{% endif %}>
               {{ 'sections.cart.checkout' | t }}
             </button>
              {% render 'gokwik-checkout' %}
