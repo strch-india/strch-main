@@ -95,7 +95,7 @@
           "type": "media_block",
           "settings": {
             "image": "shopify://shop_images/left.jpg",
-            "video": "shopify://files/videos/720x1080(holi sale) (1).mp4",
+            "video": "shopify://files/videos/720x1080.mp4",
             "heading": "",
             "subheading": "",
             "button_text": "SHOP ALL",
@@ -105,7 +105,7 @@
         "media_block_zeCBhf": {
           "type": "media_block",
           "settings": {
-            "image": "shopify://shop_images/holi_banner.jpg_1.jpg",
+            "image": "shopify://shop_images/Shop_all-MOBILE_-_Copy.jpg",
             "heading": "",
             "subheading": "",
             "button_text": "EXPLORE ACTIVEWEAR",
@@ -117,7 +117,6 @@
         "media_block_mT4n8N",
         "media_block_zeCBhf"
       ],
-      "disabled": true,
       "name": "Custom Hero Banner",
       "settings": {}
     },
@@ -149,6 +148,7 @@
         "media_block_inL4Vp",
         "media_block_Ymy9P7"
       ],
+      "disabled": true,
       "name": "Sale Hero Banner",
       "settings": {
         "title": "<p><strong>Color in</strong> <strong>motion.</strong></p><p><strong>Shades of</strong> <strong>Performance.</strong></p>",
