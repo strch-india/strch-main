@@ -107,74 +107,108 @@ gokwikCheckoutButtons.forEach(function(button) {
 
   <script>
 
-    function senddata() {
-      let str;
-      if (!sessionStorage.getItem('user_id')) {
-        // Generate a random 16-digit code
-        str = Math.floor(1000000000000000 + Math.random() * 9000000000000000).toString();
-        // Store the random code in session storage under 'user_id'
-        sessionStorage.setItem('user_id', str);
-      } else {
-        // If 'user_id' is already present, retrieve it from session storage
-        str = sessionStorage.getItem('user_id');
-      }
-      console.log(typeof (str), 'sdjsd');
-      var data = JSON.stringify({
-        "experiment_id": "69a0284433425e8e2c588f58",
-        "user_attributes": {
-          "m_id": "196g4q0esqr6",
-        },
-        "user_id": str,
-      });
+function senddata() {
+  let str;
 
-      fetch("https://api-gw.gokwik.io/v3/experiment/api/get_user_variant", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-gokwik-origin": location.origin,
+  if (!sessionStorage.getItem('user_id')) {
+    str = Math.floor(1000000000000000 + Math.random() * 9000000000000000).toString();
+    sessionStorage.setItem('user_id', str);
+  } else {
+    str = sessionStorage.getItem('user_id');
+  }
 
-        },
-        body: data,
-      })
-        .then(response => response.json())
-        .then((responseData) => {
-          console.log(responseData, 'jobss');
-          const finaldata = responseData?.data?.variant_name;
-          Decidefun(finaldata);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
+  var data = JSON.stringify({
+    "experiment_id": "69a0284433425e8e2c588f58",
+    "user_attributes": {
+      "m_id": "196g4q0esqr6",
+    },
+    "user_id": str,
+  });
 
-let css = ""
-function Decidefun(valuetodecide) {
-    let targetElement  = null;
-    if (valuetodecide == "shopify") {
-               console.log("No Gokwik ----->")
-      css = `
-      .gokwik-checkout{display:none!important;}
-#gk-checkout{display:none!important;}
-#gk-cartcheckout{display:none!important;}
-      #gokwik-buy-now{display:none!important;}
-#shopifycheckoutbutton{display:flex!important;}
-      `
-      targetElement = document.querySelector("#gokwik-buy-now")
-      if(targetElement){targetElement.remove()}
-      } else {
-         console.log("Show Gokwik ----->")
-       css = `
-       #shopifycheckoutbutton{display:none;}
-        #CartDrawer-Checkout{display:none;}
-        #checkout{display:none;}
-       `
-    }
-   const styleElement = document.createElement("style");
-   styleElement.textContent = css;
-   document.head.appendChild(styleElement);
+  fetch("https://api-gw.gokwik.io/v3/experiment/api/get_user_variant", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-gokwik-origin": location.origin,
+    },
+    body: data,
+  })
+    .then(response => response.json())
+    .then((responseData) => {
+      const finaldata = responseData?.data?.variant_name;
+      Decidefun(finaldata);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 }
 
-document.addEventListener('DOMContentLoaded',senddata);
+let css = "";
+
+function injectShopifyScripts() {
+
+  // Prevent duplicate injection
+  if (document.getElementById("breeze-sdk-script")) return;
+
+  const script1 = document.createElement("script");
+  script1.src = "https://sdk.breezesdk.store/configs/strchstore/crt.js";
+  script1.async = true;
+  script1.id = "breeze-sdk-script";
+
+  const script2 = document.createElement("script");
+  script2.src = "https://sdk.breezesdk.store/nexus/ctrl/shopify/mods/184.0.1/mod.js";
+  script2.async = true;
+
+  const script3 = document.createElement("script");
+  script3.src = "{{ 'breezeUtmTracker.js' | asset_url }}";
+  script3.async = true;
+
+  document.head.appendChild(script1);
+  document.head.appendChild(script2);
+  document.head.appendChild(script3);
+}
+
+function Decidefun(valuetodecide) {
+
+  let targetElement = null;
+
+  if (valuetodecide == "shopify") {
+
+    console.log("No Gokwik ----->");
+
+    css = `
+      .gokwik-checkout{display:none!important;}
+      #gk-checkout{display:none!important;}
+      #gk-cartcheckout{display:none!important;}
+      #gokwik-buy-now{display:none!important;}
+      #shopifycheckoutbutton{display:flex!important;}
+    `;
+
+    targetElement = document.querySelector("#gokwik-buy-now");
+    if (targetElement) {
+      targetElement.remove();
+    }
+
+    // ✅ Inject Breeze scripts only for Shopify variant
+    injectShopifyScripts();
+
+  } else {
+
+    console.log("Show Gokwik ----->");
+
+    css = `
+      #shopifycheckoutbutton{display:none;}
+      #CartDrawer-Checkout{display:none;}
+      #checkout{display:none;}
+    `;
+  }
+
+  const styleElement = document.createElement("style");
+  styleElement.textContent = css;
+  document.head.appendChild(styleElement);
+}
+
+document.addEventListener('DOMContentLoaded', senddata);
 
 </script>
 
