@@ -155,9 +155,9 @@ function Decidefun(valuetodecide) {
       css1 = `
       .gokwik-checkout{display:none!important;}
       #gokwik-buy-now{display:none!important;}
-#checkout{display:flex !important;}
+.shopifybuybtn{display:flex !important;}
 #CartDrawer-Checkout{display:flex !important;}
-#shopifycheckoutbutton{display:flex !important;}
+#checkout{display:flex !important;}
       `
       targetElement = document.querySelector("#gokwik-buy-now")
       if(targetElement){targetElement.remove()}
@@ -165,9 +165,9 @@ function Decidefun(valuetodecide) {
          console.log("Show Gokwik ----->")
        css1 = `
        .shopifycheckoutbtn{display:none !important;}
-#checkout{display:none !important;}
+.shopifybuybtn{display:none !important;}
 #CartDrawer-Checkout{display:none !important;}
-#shopifycheckoutbutton{display:none !important;}
+#checkout{display:none !important;}
        `
     }
    const styleElement = document.createElement("style");
