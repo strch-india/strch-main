@@ -150,11 +150,12 @@ gokwikCheckoutButtons.forEach(function(button) {
 let css1 = ""
 function Decidefun(valuetodecide) {
     let targetElement  = null;
-    if (valuetodecide == "shopify") {
+    if (valuetodecide == "gokwik") {
                console.log("No Gokwik ----->")
       css1 = `
       .gokwik-checkout{display:none!important;}
       #gokwik-buy-now{display:none!important;}
+.shopifybuybtn{display:block !important;}
       `
       targetElement = document.querySelector("#gokwik-buy-now")
       if(targetElement){targetElement.remove()}
