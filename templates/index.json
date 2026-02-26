@@ -117,6 +117,9 @@
         "media_block_mT4n8N",
         "media_block_zeCBhf"
       ],
+      "custom_css": [
+        ".two-media-wrapper::after{display: none;}"
+      ],
       "name": "Custom Hero Banner",
       "settings": {}
     },
