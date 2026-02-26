@@ -111,7 +111,10 @@
             {%- render 'loading-spinner' -%}
           </button>
           {%- if show_dynamic_checkout -%}
-            {{ form | payment_button }}
+            {% comment %} {{ form | payment_button }} {% endcomment %}
+             <div class="shopify-payment-button">
+{% render 'gokwik-buy-now' %}
+</div>
           {%- endif -%}
         </div>
       {%- endform -%}
