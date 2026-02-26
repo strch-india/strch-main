@@ -103,6 +103,77 @@ gokwikCheckoutButtons.forEach(function(button) {
       observer.observe(targetElement, config);
     });
   </script>
+
+
+  <script>
+
+    function senddata() {
+      let str;
+      if (!sessionStorage.getItem('user_id')) {
+        // Generate a random 16-digit code
+        str = Math.floor(1000000000000000 + Math.random() * 9000000000000000).toString();
+        // Store the random code in session storage under 'user_id'
+        sessionStorage.setItem('user_id', str);
+      } else {
+        // If 'user_id' is already present, retrieve it from session storage
+        str = sessionStorage.getItem('user_id');
+      }
+      console.log(typeof (str), 'sdjsd');
+      var data = JSON.stringify({
+        "experiment_id": "65e1e1f66114be8b2b914fce",
+        "user_attributes": {
+          "m_id": "19g6jlsvjilud",
+        },
+        "user_id": str,
+      });
+
+      fetch("https://api-gw.gokwik.io/v3/experiment/api/get_user_variant", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-gokwik-origin": location.origin,
+
+        },
+        body: data,
+      })
+        .then(response => response.json())
+        .then((responseData) => {
+          console.log(responseData, 'jobss');
+          const finaldata = responseData?.data?.variant_name;
+          Decidefun(finaldata);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+
+let css = ""
+function Decidefun(valuetodecide) {
+    let targetElement  = null;
+    if (valuetodecide == "shopify") {
+               console.log("No Gokwik ----->")
+      css = `
+      .gokwik-checkout{display:none!important;}
+      #gokwik-buy-now{display:none!important;}
+      `
+      targetElement = document.querySelector("#gokwik-buy-now")
+      if(targetElement){targetElement.remove()}
+      } else {
+         console.log("Show Gokwik ----->")
+       css = `
+       .shopify-payment-button{display:none!important;}
+       `
+    }
+   const styleElement = document.createElement("style");
+   styleElement.textContent = css;
+   document.head.appendChild(styleElement);
+}
+
+document.addEventListener('DOMContentLoaded',senddata);
+
+</script>
+
+
 {% endif %}
 <style>
   {% if settings.goEnable %}
