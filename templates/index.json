@@ -127,6 +127,7 @@
         "media_block_inL4Vp": {
           "type": "media_block",
           "settings": {
+            "video": "shopify://files/videos/720x1080((holi sale)).mp4",
             "heading": "",
             "subheading": "",
             "button_text": "",
@@ -136,6 +137,7 @@
         "media_block_Ymy9P7": {
           "type": "media_block",
           "settings": {
+            "image": "shopify://shop_images/holi_banner.jpg_1.jpg",
             "heading": "",
             "subheading": "",
             "button_text": "",
