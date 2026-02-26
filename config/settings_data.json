@@ -130,6 +130,11 @@
     "show_cart_note": false,
     "cart_drawer_collection": "",
     "cart_color_scheme": "scheme-1",
+    "mid": "19g6jlsbjj13z",
+    "envType": "production",
+    "fbpixel": "764040482032775",
+    "goEnable": true,
+    "goBuynowEnable": true,
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
