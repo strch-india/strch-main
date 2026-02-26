@@ -147,33 +147,26 @@ gokwikCheckoutButtons.forEach(function(button) {
         });
     }
 
-let css1 = ""
+let css = ""
 function Decidefun(valuetodecide) {
     let targetElement  = null;
-    if (valuetodecide == "dgokwik") {
+    if (valuetodecide == "shopify") {
                console.log("No Gokwik ----->")
-      css1 = `
-      .gokwik-checkout{display:none!important;}
-      #gokwik-buy-now{display:none!important;}
-.shopifybuybtn{display:flex !important;}
-#CartDrawer-Checkout{display:flex !important;}
-#checkout{display:flex !important;}
+      css = `
+      .gokwik-checkout{display:none;}
+      #gokwik-buy-now{display:none;}
       `
       targetElement = document.querySelector("#gokwik-buy-now")
       if(targetElement){targetElement.remove()}
       } else {
          console.log("Show Gokwik ----->")
-       css1 = `
-       .shopifycheckoutbtn{display:none !important;}
-.shopifybuybtn{display:none !important;}
-#CartDrawer-Checkout{display:none !important;}
-#checkout{display:none !important;}
+       css = `
+       .shopifycheckoutbutton{display:none;}
        `
     }
    const styleElement = document.createElement("style");
-   styleElement.textContent = css1;
+   styleElement.textContent = css;
    document.head.appendChild(styleElement);
-console.log("Show Gokwik ----->Css applied")
 }
 
 document.addEventListener('DOMContentLoaded',senddata);
