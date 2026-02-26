@@ -117,8 +117,44 @@
         "media_block_mT4n8N",
         "media_block_zeCBhf"
       ],
+      "disabled": true,
       "name": "Custom Hero Banner",
       "settings": {}
+    },
+    "hero_sale_Fph89K": {
+      "type": "hero-sale",
+      "blocks": {
+        "media_block_inL4Vp": {
+          "type": "media_block",
+          "settings": {
+            "heading": "",
+            "subheading": "",
+            "button_text": "",
+            "link": ""
+          }
+        },
+        "media_block_Ymy9P7": {
+          "type": "media_block",
+          "settings": {
+            "heading": "",
+            "subheading": "",
+            "button_text": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "media_block_inL4Vp",
+        "media_block_Ymy9P7"
+      ],
+      "name": "Sale Hero Banner",
+      "settings": {
+        "title": "<p><strong>Color in</strong> <strong>motion.</strong></p><p><strong>Shades of</strong> <strong>Performance.</strong></p>",
+        "sale_title": "<p>The Holi Edit</p>",
+        "sale_description": "<p>Flat 15% OFF. Limited Time Only</p>",
+        "sale_link": "the-holi-edit",
+        "sale_link_title": "Shop Now"
+      }
     },
     "featured_collection": {
       "type": "featured-collection",
@@ -236,6 +272,7 @@
   "order": [
     "slideshow_37dpzw",
     "hero_banner_e7HV76",
+    "hero_sale_Fph89K",
     "featured_collection",
     "shop_category_Kb7XGD"
   ]
