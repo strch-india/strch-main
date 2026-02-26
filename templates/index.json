@@ -95,7 +95,7 @@
           "type": "media_block",
           "settings": {
             "image": "shopify://shop_images/left.jpg",
-            "video": "shopify://files/videos/720x1080.mp4",
+            "video": "shopify://files/videos/720x1080(holi sale) (1).mp4",
             "heading": "",
             "subheading": "",
             "button_text": "SHOP ALL",
@@ -105,7 +105,7 @@
         "media_block_zeCBhf": {
           "type": "media_block",
           "settings": {
-            "image": "shopify://shop_images/1_jpg.jpg",
+            "image": "shopify://shop_images/holi_banner.jpg_1.jpg",
             "heading": "",
             "subheading": "",
             "button_text": "EXPLORE ACTIVEWEAR",
@@ -117,8 +117,46 @@
         "media_block_mT4n8N",
         "media_block_zeCBhf"
       ],
+      "disabled": true,
       "name": "Custom Hero Banner",
       "settings": {}
+    },
+    "hero_sale_Fph89K": {
+      "type": "hero-sale",
+      "blocks": {
+        "media_block_inL4Vp": {
+          "type": "media_block",
+          "settings": {
+            "video": "shopify://files/videos/720x1080((holi sale)) (1).mp4",
+            "heading": "",
+            "subheading": "",
+            "button_text": "",
+            "link": ""
+          }
+        },
+        "media_block_Ymy9P7": {
+          "type": "media_block",
+          "settings": {
+            "image": "shopify://shop_images/holi_banner.jpg_1.jpg",
+            "heading": "",
+            "subheading": "",
+            "button_text": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "media_block_inL4Vp",
+        "media_block_Ymy9P7"
+      ],
+      "name": "Sale Hero Banner",
+      "settings": {
+        "title": "<p><strong>Color in</strong> <strong>motion.</strong></p><p><strong>Shades of</strong> <strong>Performance.</strong></p>",
+        "sale_title": "<p>The Holi Edit</p>",
+        "sale_description": "<p>Flat 15% OFF. Limited Time Only</p>",
+        "sale_link": "the-holi-edit",
+        "sale_link_title": "Shop Now"
+      }
     },
     "featured_collection": {
       "type": "featured-collection",
@@ -184,12 +222,12 @@
             "label": "Sports Bras"
           }
         },
-        "men_block_EbnAR3": {
+        "men_block_fWA8Eg": {
           "type": "men_block",
           "settings": {
-            "image": "shopify://shop_images/Untitled_design_15__jpg.jpg",
-            "link": "shopify://collections/men-track-pant",
-            "label": "TRACK PANTS"
+            "image": "shopify://shop_images/1-Mens_Tees_tanks.jpg",
+            "link": "shopify://collections/men-top-wear",
+            "label": "Tees & Tanks"
           }
         },
         "men_block_bt99pL": {
@@ -200,20 +238,20 @@
             "label": "Shorts"
           }
         },
-        "men_block_fWA8Eg": {
+        "men_block_EbnAR3": {
           "type": "men_block",
           "settings": {
-            "image": "shopify://shop_images/Untitled_design_16__jpg.jpg",
-            "link": "shopify://collections/men-top-wear",
-            "label": "Tees & Tanks"
+            "image": "shopify://shop_images/3-Mens_Polo.jpg",
+            "link": "shopify://collections/men-polo-shirt",
+            "label": "Polo Tshirts"
           }
         },
         "men_block_HxVmWK": {
           "type": "men_block",
           "settings": {
             "image": "shopify://shop_images/4-_Men_Trackpants.jpg",
-            "link": "shopify://collections/men-joggers",
-            "label": "JOGGERS"
+            "link": "shopify://collections/men-track-pant",
+            "label": "Track Pants"
           }
         }
       },
@@ -222,33 +260,22 @@
         "women_block_MQaQkc",
         "women_block_LNVm6k",
         "women_block_HtXLgF",
-        "men_block_EbnAR3",
-        "men_block_bt99pL",
         "men_block_fWA8Eg",
+        "men_block_bt99pL",
+        "men_block_EbnAR3",
         "men_block_HxVmWK"
       ],
       "name": "Shop By Category",
       "settings": {
         "heading": "Shop By Category"
       }
-    },
-    "dynamic_faq_homepage": {
-      "type": "dynamic-faq",
-      "name": "Dynamic FAQ",
-      "settings": {
-        "heading": "Frequently Asked Questions",
-        "faqs": [
-          "faqs",
-          "faq-ghscktoy"
-        ]
-      }
     }
   },
   "order": [
     "slideshow_37dpzw",
     "hero_banner_e7HV76",
+    "hero_sale_Fph89K",
     "featured_collection",
-    "shop_category_Kb7XGD",
-    "dynamic_faq_homepage"
+    "shop_category_Kb7XGD"
   ]
 }
