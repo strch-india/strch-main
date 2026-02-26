@@ -562,16 +562,16 @@
                 </div>
 
                 <div class="cart__ctas">
-                  <button
+                  {% comment %} <button
                     type="submit"
                     id="checkout"
-                    class="cart__checkout-button button shopifycheckoutbtn"
+                    class="cart__checkout-button button"
                     name="checkout"
                     form="cart"
                   >
                     {{ 'sections.cart.checkout' | t }}
-                  </button>
-                   {% render 'gokwik-checkout' %}
+                  </button> {% endcomment %}
+               
                 </div>
 
                 {%- if additional_checkout_buttons -%}
