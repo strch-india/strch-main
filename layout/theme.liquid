@@ -1,9 +1,16 @@
 <!doctype html>
 <html class="js" lang="{{ request.locale.iso_code }}">
   <head>
-    <script src="https://sdk.breezesdk.store/configs/strchstore/crt.js" async></script>
-<script src="https://sdk.breezesdk.store/nexus/ctrl/shopify/mods/184.0.1/mod.js" async></script>
- <script src="{{ 'breezeUtmTracker.js' | asset_url }}" async></script>
+
+    <!-- Gokwik theme code start -->
+
+<link rel="dns-prefetch" href="https://pdp.gokwik.co/">
+<link rel="dns-prefetch" href="https://api.gokwik.co">
+{% render 'gokwik' %}
+<!-- Gokwik theme code End -->
+
+
+    
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
