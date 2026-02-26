@@ -1457,5 +1457,135 @@
         "default": "scheme-1"
       }
     ]
-  }
+  },
+  {
+  "name": "Gokwik",
+  "settings": [
+    {
+      "type": "text",
+      "id": "mid",
+      "label": "Merchant Id"
+    },
+    {
+      "type": "header",
+      "content": "Select environment"
+    },
+    {
+      "type": "select",
+      "id": "envType",
+      "options": [
+        { "value": "qa", "label": "QA" },
+        { "value": "sandbox", "label": "Sandbox" },
+        { "value": "production", "label": "Production" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "hideFlow",
+      "label": "Button hide without disable",
+      "info": "To hide only button without disable Gokwik flow",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Data Tracking"
+    },
+    {
+      "type": "text",
+      "id": "ga4Gokwik",
+      "label": "Enter Google Analytics ID (GA4)",
+      "placeholder": "Starts with GA- ...."
+    },
+    {
+      "type": "text",
+      "id": "fbpixel",
+      "label": "FB Pixel"
+    },
+    {
+      "type": "text",
+      "id": "snapPixel",
+      "label": "Snapchat Pixel"
+    },
+    {
+      "type": "header",
+      "content": "Checkout Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "goEnable",
+      "label": "Enable Checkout Button",
+      "info": "To insert button use {% include 'gokwik-checkout'%}"
+    },
+    {
+      "type": "color",
+      "id": "priClr",
+      "label": "Primary Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "secClr",
+      "label": "Secondary Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "main-titile",
+      "label": "Button Text",
+      "default": "Checkout"
+    },
+    {
+      "type": "header",
+      "content": "Buy Now Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "goBuynowEnable",
+      "label": "Enable Buynow Button",
+      "info": "To insert button use {% include 'gokwik-buy-now'%}"
+    },
+    {
+      "type": "color",
+      "id": "btnBClr",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "btnTextClr",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "buyNowText",
+      "label": "Buy Now Button Text",
+      "default": "Buy It Now"
+    },
+    {
+      "type": "header",
+      "content": "Other Settings"
+    },
+    {
+      "type": "text",
+      "id": "sub-titile",
+      "label": "Button Sub Text"
+    },
+    {
+      "type": "checkbox",
+      "id": "enableLogo",
+      "label": "Enable Logo"
+    },
+    {
+      "type": "checkbox",
+      "id": "enableIntlFlow",
+      "label": "Enable International Flow"
+    },
+    {
+      "type": "checkbox",
+      "id": "enableBannertext",
+      "label": "Enable Banner Text"
+    }
+  ]
+}
 ]
