@@ -1,4 +1,4 @@
-<div class="two-media-wrapper">
+<div class="two-media-wrapper" style='cursor:pointer;'>
   {% for block in section.blocks %}
     <div class="media-item {% if forloop.index == 2 %}second-item{% endif %}" id="item-{{ forloop.index }}">
       {% assign link = block.settings.link %}
