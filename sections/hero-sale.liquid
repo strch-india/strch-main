@@ -42,12 +42,17 @@
     <hr>
     <div class="sale-content-holder">
       <div>{{ section.settings.sale_description }}</div>
-      <a href="{{ section.settings.sale_link.url }}">
+      <a href="{{ section.settings.sale_link.url }}" class="sale-collection-link">
         {{ section.settings.sale_link_title }}
       </a>
     </div>
   </div>
 </div>
+
+<script>
+  let mediaContainer = document.querySelectorAll('.two-media-wrapper');
+  let linkBtn = document.querySelectorAll('.sale-collection-link');
+</script>
 
 {% comment %}
   <script>
