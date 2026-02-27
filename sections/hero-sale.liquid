@@ -52,6 +52,10 @@
 <script>
   let mediaContainer = document.querySelectorAll('.two-media-wrapper');
   let linkBtn = document.querySelectorAll('.sale-collection-link');
+
+  mediaContainer.addEventListener('click', function(){
+    linkBtn.click();
+  })
 </script>
 
 {% comment %}
