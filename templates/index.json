@@ -105,11 +105,11 @@
         "media_block_zeCBhf": {
           "type": "media_block",
           "settings": {
-            "image": "shopify://shop_images/1_jpg.jpg",
+            "image": "shopify://shop_images/holi_banner.jpg_1.jpg",
             "heading": "",
             "subheading": "",
-            "button_text": "EXPLORE ACTIVEWEAR",
-            "link": "shopify://collections/shop-all"
+            "button_text": "Holi Sale Flat 15% Off",
+            "link": "shopify://collections/the-holi-edit"
           }
         }
       },
