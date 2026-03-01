@@ -1,0 +1,269 @@
+<div class="two-media-wrapper" style='cursor:pointer;'>
+  {% for block in section.blocks %}
+    <div class="media-item {% if forloop.index == 2 %}second-item{% endif %}" id="item-{{ forloop.index }}">
+      {% assign link = block.settings.link %}
+      {% if link != blank %}
+        <a href="{{ link }}" class="media-link">
+      {% endif %}
+
+      {% if block.settings.video != blank %}
+        <video class="hero-banner-video" autoplay muted loop playsinline webkit-playsinline preload="auto">
+          <source src="{{ block.settings.video.sources[0].url }}" type="video/mp4">
+        </video>
+      {% elsif block.settings.image != blank %}
+        <img src="{{ block.settings.image | image_url: width: 1200 }}" alt="" width="auto" height="auto">
+      {% endif %}
+
+      <div class="media-content">
+        {% if block.settings.heading != blank %}
+          <h2>{{ block.settings.heading }}</h2>
+        {% endif %}
+        {% if block.settings.subheading != blank %}
+          <p>{{ block.settings.subheading }}</p>
+        {% endif %}
+        {% if block.settings.button_text != blank %}
+          <span class="cta-btn">{{ block.settings.button_text }}</span>
+        {% endif %}
+      </div>
+      {% if link != blank %}
+        </a>
+      {% endif %}
+    </div>
+  {% endfor %}
+
+  <div class="floating-text-container">
+    <div>{{ section.settings.title }}</div>
+  </div>
+
+  <div class="floating-offer-container">
+    <div class="sale-title">
+      {{ section.settings.sale_title }}
+    </div>
+    <hr>
+    <div class="sale-content-holder">
+      <div>{{ section.settings.sale_description }}</div>
+      <a href="{{ section.settings.sale_link.url }}" class="sale-collection-link">
+        {{ section.settings.sale_link_title }}
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  let mediaContainer = document.querySelector('.two-media-wrapper');
+  let linkBtn = document.querySelector('.sale-collection-link');
+
+  mediaContainer.addEventListener('click', function(){
+    linkBtn.click();
+  })
+</script>
+
+{% comment %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const heroBannerVideos = document.querySelectorAll('.hero-banner-video');
+
+      // Function to check if device width is mobile (<= 768px)
+      function isMobileWidth() {
+        return window.innerWidth <= 768;
+      }
+
+      // Detect iOS device (iPhone, iPad, iPod)
+      function isIOS() {
+        return (
+          /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+          (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
+        );
+      }
+
+      heroBannerVideos.forEach(function (video) {
+        const mediaItem = video.closest('.media-item');
+        if (!mediaItem) return;
+
+        // Ensure video attributes for iOS compatibility
+        video.setAttribute('playsinline', 'true');
+        video.setAttribute('webkit-playsinline', 'true');
+        video.muted = true;
+
+        // Set preload="auto" for faster loading on all devices
+        video.setAttribute('preload', 'auto');
+
+        // Start loading video immediately
+        video.load();
+
+        if (isMobileWidth()) {
+          // MOBILE (<= 768px): Autoplay videos
+          video.setAttribute('autoplay', 'true');
+
+          // Track if video has started playing
+          let videoHasPlayed = false;
+
+          // Function to attempt playing the video
+          function attemptAutoplay() {
+            if (videoHasPlayed) return;
+
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+              playPromise
+                .then(function () {
+                  // Video started playing successfully
+                  videoHasPlayed = true;
+                })
+                .catch(function (error) {
+                  // Autoplay was prevented - this is common on iOS Chrome/Safari
+                  // Will try again on user interaction
+                });
+            }
+          }
+
+          // Try to play when video is ready
+          if (video.readyState >= 2) {
+            attemptAutoplay();
+          } else {
+            video.addEventListener('canplay', attemptAutoplay, { once: true });
+            video.addEventListener('loadedmetadata', attemptAutoplay, { once: true });
+            video.addEventListener('loadeddata', attemptAutoplay, { once: true });
+          }
+
+          // iOS Chrome/Safari fallback: Play on first user interaction
+          // This is necessary because iOS often blocks autoplay
+          if (isIOS()) {
+            let hasUserInteracted = false;
+
+            function playOnInteraction() {
+              if (!hasUserInteracted && video.paused) {
+                hasUserInteracted = true;
+                videoHasPlayed = true;
+                video.play().catch(function (error) {
+                  // Silently fail
+                });
+              }
+            }
+
+            // Listen for various user interaction events
+            // Touch events
+            document.addEventListener('touchstart', playOnInteraction, { once: true, passive: true });
+            document.addEventListener('touchend', playOnInteraction, { once: true, passive: true });
+            // Click events
+            document.addEventListener('click', playOnInteraction, { once: true });
+            // Scroll events (common first interaction)
+            let scrollAttempted = false;
+            window.addEventListener(
+              'scroll',
+              function () {
+                if (!scrollAttempted) {
+                  scrollAttempted = true;
+                  playOnInteraction();
+                }
+              },
+              { once: true, passive: true }
+            );
+
+            // Also try on video container interaction
+            mediaItem.addEventListener('touchstart', playOnInteraction, { once: true, passive: true });
+            mediaItem.addEventListener('click', playOnInteraction, { once: true });
+          }
+        } else {
+          // DESKTOP (> 768px): Pause initially, play on hover
+          video.removeAttribute('autoplay');
+          video.pause();
+          video.currentTime = 0;
+
+          // Play on hover
+          mediaItem.addEventListener('mouseenter', function () {
+            video.play().catch(function (error) {
+              console.log('Video play prevented:', error);
+            });
+          });
+
+          // Pause when mouse leaves (keep current position, don't reset)
+          mediaItem.addEventListener('mouseleave', function () {
+            video.pause();
+          });
+        }
+      });
+    });
+  </script>
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "Sale Hero Banner",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "header",
+      "content": "Sale Box Settings"
+    },
+    {
+      "type": "richtext",
+      "id": "sale_title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "sale_description",
+      "label": "Description"
+    },
+    {
+      "type": "collection",
+      "id": "sale_link",
+      "label": "Collection"
+    },
+    {
+      "type": "text",
+      "id": "sale_link_title",
+      "default": "Shop Now",
+      "label": "Link Title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "media_block",
+      "name": "Media Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link (optional)"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 2,
+  "presets": [
+    {
+      "name": "Sale Hero Banner"
+    }
+  ]
+}
+{% endschema %}
