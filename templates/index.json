@@ -88,6 +88,43 @@
         "accessibility_info": ""
       }
     },
+    "hero_sale_BNeAjN": {
+      "type": "hero-sale",
+      "blocks": {
+        "media_block_abdQmJ": {
+          "type": "media_block",
+          "settings": {
+            "video": "shopify://files/videos/720x1080((holi sale)) (1).mp4",
+            "heading": "",
+            "subheading": "",
+            "button_text": "",
+            "link": ""
+          }
+        },
+        "media_block_38ndAa": {
+          "type": "media_block",
+          "settings": {
+            "image": "shopify://shop_images/holi_banner.jpg_1.jpg",
+            "heading": "",
+            "subheading": "",
+            "button_text": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "media_block_abdQmJ",
+        "media_block_38ndAa"
+      ],
+      "name": "Sale Hero Banner",
+      "settings": {
+        "title": "<p><strong>Color in</strong> <strong>motion.</strong></p><p><strong>Shades of</strong> <strong>Performance.</strong></p>",
+        "sale_title": "<p>The Holi Edit</p>",
+        "sale_description": "<p>Flat 15% OFF. Limited Time Only</p>",
+        "sale_link": "the-holi-edit",
+        "sale_link_title": "Shop Now"
+      }
+    },
     "hero_banner_e7HV76": {
       "type": "hero-banner",
       "blocks": {
@@ -117,6 +154,7 @@
         "media_block_mT4n8N",
         "media_block_zeCBhf"
       ],
+      "disabled": true,
       "name": "Custom Hero Banner",
       "settings": {}
     },
@@ -246,6 +284,7 @@
   },
   "order": [
     "slideshow_37dpzw",
+    "hero_sale_BNeAjN",
     "hero_banner_e7HV76",
     "featured_collection",
     "shop_category_Kb7XGD",
